@@ -103,6 +103,5 @@ const data = {
       "directions":"Take the first exit on the roundabout, then take the second left",
     }
   ]
-
 }
 
