@@ -18,7 +18,9 @@ const ItemForm = () => {
           onChange={event => setName(event.target.value)}
         />
         <select value={location} onChange={event => setLocation(event.target.value)}>
-          {/* {location} */}
+          <option>Pantry</option>
+          <option>Fridge</option>
+          <option>Freezer</option>
         </select>
         <input 
           type='text'
