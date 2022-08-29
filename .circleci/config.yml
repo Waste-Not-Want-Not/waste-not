@@ -25,7 +25,7 @@ jobs:
           pkg-manager: npm
       - run:
           name: Run tests
-          command: npm run cy:run
+          command: npx cypress open
       - run :
           name : Run build
           command: npm run build
