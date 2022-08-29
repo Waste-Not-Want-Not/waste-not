@@ -1,11 +1,21 @@
 version: 2.1
+
 orbs:
   node: circleci/node@4.7
+  heroku: circleci/heroku@1.2.6 
   cypress: cypress-io/cypress@2.1.0
+
 workflows:
-  build:
+  test_my_app:
     jobs:
       - cypress/run
+      - deploy:
+          requires:
+            - cypress/run # only deploy if the build_and_test job has completed
+          filters:
+            branches:
+              only: main # only deploy when on main
+              
 jobs:
   build_and_test:
     executor: node/default
@@ -23,4 +33,11 @@ jobs:
           root: ~/project
           paths:
             - .
-#
+  deploy: # this can be any name you choose
+  executor: heroku/default
+  steps:
+    - attach_workspace:
+        at: ~/project
+    - heroku/deploy-via-git:
+        force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
+
