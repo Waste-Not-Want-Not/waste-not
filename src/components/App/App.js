@@ -1,9 +1,11 @@
 import './App.css';
+import Navbar from '../Navbar/Navbar'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-    </div>
+    <main className="App">
+      <Navbar />
+    </main>
   );
 }
 
