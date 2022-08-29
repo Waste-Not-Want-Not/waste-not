@@ -11,7 +11,7 @@ workflows:
       - build_and_test:
         - deploy:
             requires:
-              - cypress/run # only deploy if the build_and_test job has completed
+              - build_and_test # only deploy if the build_and_test job has completed
             filters:
               branches:
                 only: main # only deploy when on main
