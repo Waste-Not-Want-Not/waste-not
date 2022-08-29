@@ -9,7 +9,7 @@ workflows:
   test_my_app:
     jobs:
       - cypress/run:
-        start: npm start
+          start: npm start
       - build
       - deploy:
           requires:
