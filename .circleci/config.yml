@@ -8,14 +8,14 @@ orbs:
 workflows:
   test_my_app:
     jobs:
-      - cypress/run
-      - deploy:
-          requires:
-            - cypress/run # only deploy if the build_and_test job has completed
-          filters:
-            branches:
-              only: main # only deploy when on main
-              
+      - build_and_test:
+        - deploy:
+            requires:
+              - cypress/run # only deploy if the build_and_test job has completed
+            filters:
+              branches:
+                only: main # only deploy when on main
+
 jobs:
   build_and_test:
     executor: node/default
