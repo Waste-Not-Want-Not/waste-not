@@ -21,9 +21,10 @@ const Kitchen = () => {
     return previews
   }
 
-  if (loading) {
-    return <p></p>
-  }
+  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+
+  if (loading) return <h2>LOADING...</h2>
+
   if (data) {
     return (
       <section className='kitchen-container'>
