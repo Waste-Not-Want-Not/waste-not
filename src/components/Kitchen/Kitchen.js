@@ -1,9 +1,9 @@
 import React from 'react';
 import './Kitchen.css';
 import Preview from '../Preview/Preview';
-// import Pantry from '../assets/pantry.png'
-// import Fridge from '../assets/fridge.png'
-// import Freezer from '../assets/freezer.png'
+import Pantry from '../../assets/pantry.png'
+import Fridge from '../../assets/fridge.png'
+import Freezer from '../../assets/freezer.png'
 import { useQuery } from '@apollo/client';
 import { GET_ITEMS_QUERY } from '../../graphql/queries';
 
@@ -28,22 +28,21 @@ const Kitchen = () => {
   if (data) {
     return (
       <section className='kitchen-container'>
-        {/* {console.log(data.getUserById.items)} */}
-        {/* <img src={require (Pantry)} alt='pantry'/>
-        <img src={require (Fridge)} alt='fridge'/>
-        <img src={require (Freezer)} alt='freezer'/> */}
         <button>ADD NEW FOOD</button>
         <article className='kitchen'>
           <div className='pantry'>
             <h3>Pantry</h3>
+            <img className='location-img' src={Pantry} alt='pantry'/>
             {getKitchen('Pantry')}
           </div>
           <div className='fridge'>
             <h3>Fridge</h3>
+            <img className='location-img' src={Fridge} alt='fridge'/>
             {getKitchen('Fridge')}
           </div>
           <div className='freezer'>
             <h3>Freezer</h3>
+            <img className='location-img' src={Freezer} alt='freezer'/>
             {getKitchen('Freezer')}
           </div>
         </article>

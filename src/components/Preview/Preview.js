@@ -4,7 +4,7 @@ import './Preview.css';
 const Previews = ({ item }) => {
   return (
     <article className='item-preview'>
-      <h4>NAME: {item.name} </h4>
+      <h4>{item.name}</h4>
       {/* <img /> */}
     </article>
   )
