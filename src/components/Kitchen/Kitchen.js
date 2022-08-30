@@ -1,5 +1,6 @@
 import React from 'react';
 import './Kitchen.css';
+import Preview from '../Preview/Preview';
 // import Pantry from '../assets/pantry.png'
 // import Fridge from '../assets/fridge.png'
 // import Freezer from '../assets/freezer.png'
@@ -11,6 +12,8 @@ const Kitchen = () => {
   const {loading, data, error} = useQuery( GET_ITEMS_QUERY, {
     variables: { id: 1 }
   })
+
+  // const 
 
   return (
     <section className='kitchen-container'>

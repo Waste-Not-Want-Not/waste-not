@@ -1,5 +1,5 @@
 import React from 'react';
-import './Previews.css';
+import './Preview.css';
 
 const Previews = () => {
   return (
