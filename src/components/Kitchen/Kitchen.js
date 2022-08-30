@@ -3,10 +3,18 @@ import './Kitchen.css';
 // import Pantry from '../assets/pantry.png'
 // import Fridge from '../assets/fridge.png'
 // import Freezer from '../assets/freezer.png'
+import { useQuery } from '@apollo/client';
+import { GET_ITEMS_QUERY } from '../../graphql/queries';
 
 const Kitchen = () => {
+
+  const {loading, data, error} = useQuery( GET_ITEMS_QUERY, {
+    variables: { id: 1 }
+  })
+
   return (
     <section className='kitchen-container'>
+      {console.log(data)}
       {/* <img src={require (Pantry)} alt='pantry'/>
       <img src={require (Fridge)} alt='fridge'/>
       <img src={require (Freezer)} alt='freezer'/> */}
