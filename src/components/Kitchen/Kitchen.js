@@ -32,24 +32,30 @@ const Kitchen = () => {
         <button>ADD NEW FOOD</button>
         <article className='kitchen'>
           <div className='pantry'>
-            <NavLink to='/pantry'>
-              <img className='location-img' src={Pantry} alt='pantry'/>
-              <h3>Pantry</h3>
-            </NavLink>
+            <div className='location-link'>
+              <NavLink to='/pantry'>
+                <img className='location-img' src={Pantry} alt='pantry'/>
+                <h3>Pantry</h3>
+              </NavLink>
+            </div>
             {getKitchen('pantry')}
           </div>
           <div className='fridge'>
-            <NavLink to='/fridge'>
-              <img className='location-img' src={Fridge} alt='fridge'/>
-              <h3>Fridge</h3>
-            </NavLink>
+            <div className='location-link'>
+              <NavLink to='/fridge'>
+                <img className='location-img' src={Fridge} alt='fridge'/>
+                <h3>Fridge</h3>
+              </NavLink>
+            </div>
             {getKitchen('fridge')}
           </div>
           <div className='freezer'>
-            <NavLink to='/freezer'>
-              <img className='location-img' src={Freezer} alt='freezer'/>
-              <h3>Freezer</h3>
-            </NavLink>
+            <div className='location-link'>
+              <NavLink to='/freezer'>
+                <img className='location-img' src={Freezer} alt='freezer'/>
+                <h3>Freezer</h3>
+              </NavLink>
+            </div>
             {getKitchen('freezer')}
           </div>
         </article>

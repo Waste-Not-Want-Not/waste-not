@@ -13,3 +13,10 @@
 .location-img {
   width: 5em;
 }
+
+.location-link:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all .5s;
+  opacity: .8;
+}
