@@ -1,10 +1,10 @@
 import React from 'react';
-import './Previews.css';
+import './Preview.css';
 
-const Previews = () => {
+const Previews = ({ item }) => {
   return (
     <article className='item-preview'>
-      <h4>NAME: </h4>
+      <h4>{item.name}</h4>
       {/* <img /> */}
     </article>
   )
