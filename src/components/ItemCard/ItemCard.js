@@ -1,7 +1,7 @@
 import "./ItemCard.css"
 
 const ItemCard = ({ item }) => {
-    const { image, expirationDate, name} = item;
+    const { expirationDate, name} = item;
     return (
         <article className="item-card-container">
             <p className="expiration">{expirationDate}</p>
