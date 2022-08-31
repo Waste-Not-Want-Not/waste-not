@@ -25,8 +25,7 @@ const Location = () => {
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
 
   if (loading) return <h2>LOADING...</h2>
-
-  // const itemCards = 
+ 
   if (data) return (
     <section className="location-container">
       {console.log(data.getUserById[`${location}Items`][0].name)}
@@ -36,3 +35,5 @@ const Location = () => {
     </section>
   )
 }
+
+export default Location
