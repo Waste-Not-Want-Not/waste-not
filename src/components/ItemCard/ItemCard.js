@@ -4,11 +4,13 @@ const ItemCard = ({ item }) => {
         <article className="item-card-container">
             <p className="expiration">{expirationDate}</p>
             <div className="item-card">
-                <img src={image} alt={name}/>
+                {/* <img src={image} alt={name}/> */}
                 <p>{name}</p>
-                <button className="ate-button"></button>
-                <button className="donate-button"></button>
+                <button className="ate-button">ATE</button>
+                <button className="donate-button">DONATE</button>
             </div>
         </article>
     )
 }
+
+export default ItemCard

@@ -1,5 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
-import { ItemCard } from "../../ItemCard/ItemCard"
+import ItemCard from "../ItemCard/ItemCard"
 
 const Location = () => {
   const location = 'pantry'
