@@ -1,3 +1,5 @@
+import "./ItemCard.css"
+
 const ItemCard = ({ item }) => {
     const { image, expirationDate, name} = item;
     return (
