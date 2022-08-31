@@ -6,7 +6,7 @@ import Fridge from '../../assets/fridge.png';
 import Freezer from '../../assets/freezer.png';
 import { useQuery } from '@apollo/client';
 import { GET_ITEMS_QUERY } from '../../graphql/queries';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Kitchen = () => {
 
@@ -32,21 +32,24 @@ const Kitchen = () => {
         <button>ADD NEW FOOD</button>
         <article className='kitchen'>
           <div className='pantry'>
-            {/* <NavLink to='/pantry'> */}
+            <NavLink to='/pantry'>
               <img className='location-img' src={Pantry} alt='pantry'/>
               <h3>Pantry</h3>
-            {/* </NavLink> */}
+            </NavLink>
             {getKitchen('pantry')}
           </div>
           <div className='fridge'>
-
-            <img className='location-img' src={Fridge} alt='fridge'/>
-            <h3>Fridge</h3>
+            <NavLink to='/fridge'>
+              <img className='location-img' src={Fridge} alt='fridge'/>
+              <h3>Fridge</h3>
+            </NavLink>
             {getKitchen('fridge')}
           </div>
           <div className='freezer'>
-            <img className='location-img' src={Freezer} alt='freezer'/>
-            <h3>Freezer</h3>
+            <NavLink to='/freezer'>
+              <img className='location-img' src={Freezer} alt='freezer'/>
+              <h3>Freezer</h3>
+            </NavLink>
             {getKitchen('freezer')}
           </div>
         </article>
