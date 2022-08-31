@@ -8,7 +8,7 @@ const App = () => {
       <Navbar />
       <Kitchen />
     </main>
-  );
+  )
 }
 
 export default App;

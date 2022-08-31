@@ -33,17 +33,17 @@ const Kitchen = () => {
           <div className='pantry'>
             <h3>Pantry</h3>
             <img className='location-img' src={Pantry} alt='pantry'/>
-            {getKitchen('Pantry')}
+            {getKitchen('pantry')}
           </div>
           <div className='fridge'>
             <h3>Fridge</h3>
             <img className='location-img' src={Fridge} alt='fridge'/>
-            {getKitchen('Fridge')}
+            {getKitchen('fridge')}
           </div>
           <div className='freezer'>
             <h3>Freezer</h3>
             <img className='location-img' src={Freezer} alt='freezer'/>
-            {getKitchen('Freezer')}
+            {getKitchen('freezer')}
           </div>
         </article>
         <button>SHOW POSSIBLE DONATIONS</button>
