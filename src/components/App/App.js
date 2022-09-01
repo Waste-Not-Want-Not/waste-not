@@ -1,14 +1,32 @@
 import './App.css';
 import Navbar from '../Navbar/Navbar';
 import Kitchen from '../Kitchen/Kitchen';
-import Location from '../Location/Location'
+import Location from '../Location/Location';
+import { Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <main className="App">
       <Navbar />
-      <Kitchen />
-      <Location />
+      <Switch>
+        <Route exact path='/'>
+          <Kitchen />
+        </Route>
+        <Route exact path='/fridge'>
+          <Location kitchenLocation='fridge'/>
+        </Route>
+        <Route exact path='/pantry'>
+          <Location kitchenLocation='pantry'/>
+        </Route>
+        <Route exact path='/freezer'>
+          <Location kitchenLocation='freezer'/>
+        </Route>
+        {/* We'll also need routes for donations page and new item page. */}
+        <Route path='*'>
+          <h2>Error - Please return to Home page</h2>
+        </Route>
+      </Switch>
+
     </main>
   )
 }
