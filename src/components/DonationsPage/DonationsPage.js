@@ -1,4 +1,6 @@
-import 'DonationsPage.css';
+import './DonationsPage.css';
+import FoodBankForm from '../FoodBankForm/FoodBankForm';
+import Donations from '../Donations/Donations';
 
 const DonationsPage = () => {
 

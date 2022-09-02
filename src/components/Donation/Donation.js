@@ -1,4 +1,4 @@
-import 'Donation.css';
+import './Donation.css';
 
 const Donation = ({key, item}) => {
 

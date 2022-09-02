@@ -1,7 +1,7 @@
-import 'Donations.css';
+import './Donations.css';
+import Donation from '../Donation/Donation';
 import { useQuery } from '@apollo/client';
 import { GET_DONATION_ITEMS_QUERY } from '../../graphql/queries';
-
 
 const Donations = () => {
 

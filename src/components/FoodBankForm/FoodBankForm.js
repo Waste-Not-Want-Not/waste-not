@@ -1,4 +1,4 @@
-import 'FoodBankForm.css';
+import './FoodBankForm.css';
 
 const FoodBankForm = () => {
 
