@@ -22,6 +22,9 @@ const App = () => {
           <Location kitchenLocation='freezer'/>
         </Route>
         {/* We'll also need routes for donations page and new item page. */}
+        <Route exact path='/donations'>
+          <DonationsPage />
+        </Route>
         <Route path='*'>
           <h2>Error - Please return to Home page</h2>
         </Route>
