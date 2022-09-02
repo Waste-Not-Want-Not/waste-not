@@ -13,3 +13,18 @@ query getUserById($id: ID!) {
     }
   }
 `;
+
+export const GET_DONATION_ITEMS_QUERY = gql`
+query getUserById($id: ID!) {
+  getUserById(id: $id) {
+      name
+      email
+      donationItems {
+          name
+          expirationDate
+          location
+          forDonation
+      }
+    }
+  }
+`;
