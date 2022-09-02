@@ -2,6 +2,9 @@ import 'DonationsPage.css';
 
 const DonationsPage = () => {
 
+  return (
+    <FoodBankForm />
+  )
 
 }
 
