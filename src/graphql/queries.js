@@ -28,3 +28,14 @@ query getUserById($id: ID!) {
     }
   }
 `;
+
+export const GET_FOODBANKS_QUERY = gql`
+query getFoodBank($location: String!) {
+  getFoodBank(location: $location) {
+      name
+      address
+      phoneNumber
+      directions
+    }
+  }
+`;
