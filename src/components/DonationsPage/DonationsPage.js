@@ -2,14 +2,12 @@ import 'DonationsPage.css';
 
 const DonationsPage = () => {
 
-
-
-
   return (
-    <FoodBankForm />
-    <Donations />
+    <section className='donations-page'>
+      <FoodBankForm />
+      <Donations />
+    </section>
   )
-
 }
 
 export default DonationsPage;

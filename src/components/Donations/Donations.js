@@ -28,7 +28,7 @@ const Donations = () => {
       </section>
 
     )
-
+  }
 }
 
 export default Donations;
