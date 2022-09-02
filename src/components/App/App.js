@@ -12,7 +12,6 @@ const App = () => {
       <Switch>
         <Route exact path='/'>
           <Kitchen />
-          <another thing></another>
         </Route>
         <Route exact path='/fridge'>
           <Location kitchenLocation='fridge'/>

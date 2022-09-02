@@ -1,6 +1,6 @@
 import './Donation.css';
 
-const Donation = ({key, item}) => {
+const Donation = ({item}) => {
 
   return(
     <article className="item-card-container">
