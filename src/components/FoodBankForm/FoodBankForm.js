@@ -11,6 +11,8 @@ const FoodBankForm = () => {
     variables: { location: inputLocation }
   })
 
+  if (error) return <h1>Error Found</h1>
+  
   return (
     <section>
       {console.log(data)}
@@ -24,6 +26,17 @@ const FoodBankForm = () => {
         />
         <button onClick={() => getLocation()}>Submit</button>
       </div>
+      <article>
+        {data && (
+          <>
+            <p>Name:{data.getFoodBank.name} </p>
+            <p>Address: {data.getFoodBank.address} </p>
+            <p>Phone #: {data.getFoodBank.phoneNumber} </p>
+            <p>Directions: {data.getFoodBank.directions}</p>
+          </>
+        )
+        }
+      </article>
     </section>
   )
 
