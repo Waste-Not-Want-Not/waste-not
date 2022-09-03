@@ -28,25 +28,29 @@ const Location = ({kitchenLocation}) => {
 
   if (loading) return <h2>LOADING...</h2>
   
-  let newItems = [...data.getUserById[`${kitchenLocation}Items`]];
+  
+  if (data) {
 
-  let itemCards = newItems.sort((a, b) => {
-    const date1 = new Date(a.expirationDate);
-    const date2 = new Date(b.expirationDate);
-    return date1 - date2
-  }).map(item => {
-    return <ItemCard item={item} key={item.id}/>
-  })
+    let newItems = [...data.getUserById[`${kitchenLocation}Items`]];
+    
+    let itemCards = newItems.sort((a, b) => {
+      const date1 = new Date(a.expirationDate);
+      const date2 = new Date(b.expirationDate);
+      return date1 - date2
+    }).map(item => {
+      return <ItemCard item={item} key={item.id}/>
+    })
 
-  if (data) return (
-    <section className="location-container">
-      {console.log()}
-      <div className='location'>
-        <h3>{kitchenLocation.toUpperCase()}</h3>
-        {itemCards}
-      </div>
-    </section>
-  )
+    return (
+      <section className="location-container">
+        {console.log()}
+        <div className='location'>
+          <h3>{kitchenLocation.toUpperCase()}</h3>
+          {itemCards}
+        </div>
+      </section>
+    )
+  }
 }
 
 export default Location
