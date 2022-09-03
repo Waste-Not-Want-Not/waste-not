@@ -1,7 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import ItemCard from "../ItemCard/ItemCard"
 import "./Location.css"
-const dayjs = require('dayjs')
 
 const Location = ({kitchenLocation}) => {
   
