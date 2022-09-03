@@ -8,6 +8,7 @@ const ItemCard = ({ item }) => {
             <div className="item-card">
                 {/* <img src={image} alt={name}/> */}
                 <p>{item.name}</p>
+                <p>Location: {item.location}</p>
                 <button className="ate-button">ATE</button>
                 <button className="donate-button">DONATE</button>
             </div>

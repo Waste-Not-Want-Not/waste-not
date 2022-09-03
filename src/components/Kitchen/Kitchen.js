@@ -67,7 +67,9 @@ const Kitchen = () => {
             {getKitchen('freezer')}
           </div>
         </article>
-        <button>SHOW POSSIBLE DONATIONS</button>
+        <NavLink to='/expiring'>
+          <button>SHOW POSSIBLE DONATIONS</button>
+        </NavLink>
       </section>
     ) 
   }
