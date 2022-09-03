@@ -24,21 +24,13 @@ const Location = ({kitchenLocation}) => {
      variables: { id: 1 }
   })
 
-  const convertDates = () => {
-    let formatedDates = []
-    data.getUserById[`${kitchenLocation}Items`].forEach((item) => {
-      dayjs(item.expirationDate).format('YYYY-MM-DD')
-      formatedDates.push()
-    })
-  }
-
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
 
   if (loading) return <h2>LOADING...</h2>
   
-  let newItemArr = [...data.getUserById[`${kitchenLocation}Items`]];
+  let newItems = [...data.getUserById[`${kitchenLocation}Items`]];
 
-  let itemCards = newItemArr.sort((a, b) => {
+  let itemCards = newItems.sort((a, b) => {
     const date1 = new Date(a.expirationDate);
     const date2 = new Date(b.expirationDate);
     return date1 - date2

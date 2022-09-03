@@ -16,10 +16,14 @@ const Kitchen = () => {
 
   const getKitchen = (location) => {
     const filteredItems = data.getUserById.items.filter(item => item.location === location);
-    const previews = filteredItems.map((item) => {
+    let sortedPreviews = filteredItems.sort((a, b) => {
+      const date1 = new Date(a.expirationDate);
+      const date2 = new Date(b.expirationDate);
+      return date1 - date2
+    }).map((item) => {
       return <Preview key={item.name} item={item} />
     })
-    return previews
+    return sortedPreviews
   }
 
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
