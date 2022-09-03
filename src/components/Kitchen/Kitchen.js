@@ -14,19 +14,27 @@ const Kitchen = () => {
     variables: { id: 1 }
   })
 
-  const getKitchen = (location) => {
-    const filteredItems = data.getUserById.items.filter(item => item.location === location);
-    const previews = filteredItems.map((item) => {
-      return <Preview key={item.name} item={item} />
-    })
-    return previews
-  }
-
+  
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
-
+  
   if (loading) return <h2>LOADING...</h2>
-
+  
   if (data) {
+
+    let newItems = [...data.getUserById.items];
+  
+    const getKitchen = (location) => {
+      const filteredItems = newItems.filter(item => item.location === location);
+      let sortedPreviews = filteredItems.sort((a, b) => {
+        const date1 = new Date(a.expirationDate);
+        const date2 = new Date(b.expirationDate);
+        return date1 - date2
+      }).map((item) => {
+        return <Preview key={item.name} item={item} />
+      })
+      return sortedPreviews.splice(0,5)
+    }
+
     return (
       <section className='kitchen-container'>
         <button>ADD NEW FOOD</button>
@@ -59,7 +67,9 @@ const Kitchen = () => {
             {getKitchen('freezer')}
           </div>
         </article>
-        <button>SHOW POSSIBLE DONATIONS</button>
+        <NavLink to='/expiring'>
+          <button>SHOW POSSIBLE DONATIONS</button>
+        </NavLink>
       </section>
     ) 
   }
