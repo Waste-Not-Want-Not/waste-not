@@ -11,7 +11,9 @@ const FoodBankForm = () => {
     variables: { location: inputLocation }
   })
 
-  if (error) return <h1>Error Found</h1>
+  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+
+  if (loading) return <h2>LOADING...</h2>
   
   return (
     <section>
