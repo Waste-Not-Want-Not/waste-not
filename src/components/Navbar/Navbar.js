@@ -6,11 +6,11 @@ const Navbar = () => {
   return (
     <header className='navbar'>
       <NavLink to='/'>
-        <button>HOME</button>
+        <button className='nav-button'>HOME</button>
       </NavLink>
       <h1>Waste Not, Want Not</h1>
       <NavLink to='/donations'>
-        <button>DONATION PAGE</button>
+        <button className='nav-button'>DONATION PAGE</button>
       </NavLink>
     </header>
   )
