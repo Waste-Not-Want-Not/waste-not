@@ -6,9 +6,11 @@ const Donation = ({item}) => {
     <article className="item-card-container">
       <p className="expiration">{item.expirationDate}</p>
       <div className="donation">
-          {/* <img src={image} alt={name}/> */}
+        {/* <img src={image} alt={name}/> */}
+        <div>
           <p>{item.name}</p>
-          <p>{item.location}</p>
+          <p>Location: {item.location}</p>
+        </div>
       </div>
     </article>
   )

@@ -16,19 +16,18 @@ const FoodBankForm = () => {
   if (loading) return <h2>LOADING...</h2>
   
   return (
-    <section>
-      {console.log(data)}
-      <h3>Food Banks</h3>
-      <div>
+    <section className='food-bank-form-container'>
+      <h3 className='food-bank-heading'>Food Banks</h3>
+      <article className='food-bank-form'>
         <input 
           type='text'
           placeholder='City, State'
           value={inputLocation}
           onChange={event => setLocation(event.target.value)}
         />
-        <button onClick={() => getLocation()}>Submit</button>
-      </div>
-      <article>
+        <button className='submit-button' onClick={() => getLocation()}>Submit</button>
+      </article>
+      <article className='food-bank-info'>
         {data && (
           <>
             <p>Name:{data.getFoodBank.name} </p>
@@ -36,7 +35,7 @@ const FoodBankForm = () => {
             <p>Phone #: {data.getFoodBank.phoneNumber} </p>
             <p>Directions: {data.getFoodBank.directions}</p>
           </>
-        )
+          )
         }
       </article>
     </section>
