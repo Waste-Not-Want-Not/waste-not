@@ -1,0 +1,4 @@
+.possible-donation-container {
+  display: grid;
+  place-items: center;
+}

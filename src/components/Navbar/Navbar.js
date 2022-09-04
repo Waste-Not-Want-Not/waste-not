@@ -8,7 +8,7 @@ const Navbar = () => {
       <NavLink to='/'>
         <button className='nav-button'>HOME</button>
       </NavLink>
-      <h1>Waste Not, Want Not</h1>
+      <h1 className='title'>Waste Not, Want Not</h1>
       <NavLink to='/donations'>
         <button className='nav-button'>DONATION PAGE</button>
       </NavLink>

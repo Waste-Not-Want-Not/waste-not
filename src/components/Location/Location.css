@@ -1,6 +1,11 @@
-.location-container {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-  }
+.location {
+  text-align: center;
+  margin-right: 3.5rem
+}
+
+.location-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3.5rem;
+}
