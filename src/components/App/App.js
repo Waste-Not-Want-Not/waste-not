@@ -17,11 +17,12 @@ const App = () => {
           <Overview />
         </Route>
         <Route exact path='/mykitchen'>
+          <ItemForm />
           <Kitchen />
         </Route>
-        <Route exact path='/itemform'>
+        {/* <Route exact path='/itemform'>
           <ItemForm />
-        </Route>
+        </Route> */}
         <Route exact path='/fridge'>
           <Location kitchenLocation='fridge'/>
         </Route>

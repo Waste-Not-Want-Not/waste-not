@@ -9,7 +9,7 @@ const ItemForm = () => {
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
 
-  const [createItem, { data, loading, error, refetch}] = useMutation(CREATE_ITEM);
+  const [createItem, { data, loading, error}] = useMutation(CREATE_ITEM);
 
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
   
@@ -49,7 +49,6 @@ const ItemForm = () => {
               }
             }
           })
-          refetch();
         }}>SUBMIT</button>
       </div>
     </section>

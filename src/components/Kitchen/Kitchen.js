@@ -10,16 +10,17 @@ import { NavLink } from 'react-router-dom';
 
 const Kitchen = () => {
 
-  const {loading, data, error} = useQuery( GET_ITEMS_QUERY, {
+  const {loading, data, error, refetch} = useQuery( GET_ITEMS_QUERY, {
     variables: { id: 1 }
   })
-
   
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
   
   if (loading) return <h2>LOADING...</h2>
   
   if (data) {
+
+    refetch();
 
     let newItems = [...data.getUserById.items];
   
@@ -37,9 +38,9 @@ const Kitchen = () => {
 
     return (
       <section className='kitchen-container'>
-        <NavLink to='/itemform'>
+        {/* <NavLink to='/itemform'>
           <button className='kitchen-button'>ADD NEW FOOD</button>
-        </NavLink>
+        </NavLink> */}
         <article className='kitchen'>
           <div className='pantry'>
             <NavLink to='/pantry'>
