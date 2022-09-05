@@ -1,4 +1,5 @@
 import "./Overview.css"
+import { NavLink } from "react-router-dom"
 
 const Overview = () => {
     return (
@@ -18,6 +19,9 @@ const Overview = () => {
             <h1>
                 Let's work together to mitigate food waste!
             </h1>
+            <NavLink to='/mykitchen'>
+                <button>Continue To Your Kitchen</button>
+            </NavLink>
         </article>
     )
 }

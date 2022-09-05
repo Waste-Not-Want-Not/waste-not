@@ -4,6 +4,7 @@ import Kitchen from '../Kitchen/Kitchen';
 import Location from '../Location/Location';
 import PossibleDonations from '../PossibleDonations/PossibleDonations';
 import DonationsPage from '../DonationsPage/DonationsPage';
+import Overview from '../Overview/Overview'
 import { Switch, Route } from 'react-router-dom';
 
 const App = () => {
@@ -12,6 +13,9 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path='/'>
+          <Overview />
+        </Route>
+        <Route exact path='/mykitchen'>
           <Kitchen />
         </Route>
         <Route exact path='/fridge'>
