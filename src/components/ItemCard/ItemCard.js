@@ -1,5 +1,5 @@
-import "./ItemCard.css"
-const dayjs = require('dayjs')
+import "./ItemCard.css";
+const dayjs = require('dayjs');
 
 const ItemCard = ({ item }) => {
   return (

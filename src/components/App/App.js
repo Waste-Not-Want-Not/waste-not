@@ -5,7 +5,7 @@ import Kitchen from '../Kitchen/Kitchen';
 import Location from '../Location/Location';
 import PossibleDonations from '../PossibleDonations/PossibleDonations';
 import DonationsPage from '../DonationsPage/DonationsPage';
-import Overview from '../Overview/Overview'
+import Overview from '../Overview/Overview';
 import { Switch, Route } from 'react-router-dom';
 
 const App = () => {
