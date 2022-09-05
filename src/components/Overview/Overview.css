@@ -1,0 +1,11 @@
+.overview {
+    display:grid;
+    place-items: center;
+    border: solid;
+    padding:1.5rem;
+}
+
+.overview > p {
+    margin:0;
+    padding: 1rem;
+}

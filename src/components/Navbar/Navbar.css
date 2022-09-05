@@ -8,3 +8,10 @@
   padding: 1rem;
   margin: 1.5rem;
 }
+
+.nav-header {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:1rem;
+}

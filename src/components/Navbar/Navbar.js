@@ -5,10 +5,15 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   return (
     <header className='navbar'>
-      <NavLink to='/'>
-        <button className='nav-button'>HOME</button>
+      <NavLink to='/mykitchen'>
+        <button className='nav-button'>MY KITCHEN</button>
       </NavLink>
-      <h1 className='title'>Waste Not, Want Not</h1>
+      <div className='nav-header'>
+        <h1 className='title'>Waste Not, Want Not</h1>
+        <NavLink to='/'>
+          <button>Overview</button>
+        </NavLink>
+      </div>
       <NavLink to='/donations'>
         <button className='nav-button'>DONATION PAGE</button>
       </NavLink>
