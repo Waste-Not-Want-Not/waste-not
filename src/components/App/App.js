@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from '../Navbar/Navbar';
+import ItemForm from '../ItemForm/ItemForm';
 import Kitchen from '../Kitchen/Kitchen';
 import Location from '../Location/Location';
 import PossibleDonations from '../PossibleDonations/PossibleDonations';
@@ -17,6 +18,9 @@ const App = () => {
         </Route>
         <Route exact path='/mykitchen'>
           <Kitchen />
+        </Route>
+        <Route exact path='/itemform'>
+          <ItemForm />
         </Route>
         <Route exact path='/fridge'>
           <Location kitchenLocation='fridge'/>

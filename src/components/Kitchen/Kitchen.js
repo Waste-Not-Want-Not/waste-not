@@ -37,7 +37,9 @@ const Kitchen = () => {
 
     return (
       <section className='kitchen-container'>
-        <button className='kitchen-button'>ADD NEW FOOD</button>
+        <NavLink to='/itemform'>
+          <button className='kitchen-button'>ADD NEW FOOD</button>
+        </NavLink>
         <article className='kitchen'>
           <div className='pantry'>
             <NavLink to='/pantry'>
