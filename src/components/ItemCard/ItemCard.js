@@ -4,7 +4,7 @@ const dayjs = require('dayjs')
 const ItemCard = ({ item }) => {
   return (
     <article className="item-card-container">
-      <p className="expiration">{dayjs(item.expirationDate).format('dddd, MMMM DD, YYYY')}</p>
+      <p className="expiration">Expiration Date: {dayjs(item.expirationDate).format('dddd, MMMM DD, YYYY')}</p>
       <div className="item-card">
         {/* <img src={image} alt={name}/> */}
         <div className='item-details'>
