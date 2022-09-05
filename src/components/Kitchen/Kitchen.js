@@ -1,5 +1,6 @@
 import React from 'react';
 import './Kitchen.css';
+import ItemForm from '../ItemForm/ItemForm';
 import Preview from '../Preview/Preview';
 import Pantry from '../../assets/pantry.png';
 import Fridge from '../../assets/fridge.png';
@@ -10,16 +11,17 @@ import { NavLink } from 'react-router-dom';
 
 const Kitchen = () => {
 
-  const {loading, data, error} = useQuery( GET_ITEMS_QUERY, {
+  const {loading, data, error, refetch} = useQuery( GET_ITEMS_QUERY, {
     variables: { id: 1 }
   })
-
   
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
   
   if (loading) return <h2>LOADING...</h2>
   
   if (data) {
+
+    // refetch();
 
     let newItems = [...data.getUserById.items];
   
@@ -37,7 +39,7 @@ const Kitchen = () => {
 
     return (
       <section className='kitchen-container'>
-        <button className='kitchen-button'>ADD NEW FOOD</button>
+        <ItemForm refetch={refetch} />
         <article className='kitchen'>
           <div className='pantry'>
             <NavLink to='/pantry'>
