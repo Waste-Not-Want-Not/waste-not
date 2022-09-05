@@ -1,5 +1,6 @@
 import React from 'react';
 import './Kitchen.css';
+import ItemForm from '../ItemForm/ItemForm';
 import Preview from '../Preview/Preview';
 import Pantry from '../../assets/pantry.png';
 import Fridge from '../../assets/fridge.png';
@@ -20,7 +21,7 @@ const Kitchen = () => {
   
   if (data) {
 
-    refetch();
+    // refetch();
 
     let newItems = [...data.getUserById.items];
   
@@ -38,9 +39,7 @@ const Kitchen = () => {
 
     return (
       <section className='kitchen-container'>
-        {/* <NavLink to='/itemform'>
-          <button className='kitchen-button'>ADD NEW FOOD</button>
-        </NavLink> */}
+        <ItemForm refetch={refetch} />
         <article className='kitchen'>
           <div className='pantry'>
             <NavLink to='/pantry'>

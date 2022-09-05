@@ -3,7 +3,7 @@ import './ItemForm.css';
 import { useMutation } from '@apollo/client';
 import { CREATE_ITEM } from '../../graphql/mutations';
 
-const ItemForm = () => {
+const ItemForm = ({refetch}) => {
 
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
@@ -47,8 +47,9 @@ const ItemForm = () => {
                 location, 
                 expirationDate: `${date}T00:00:00Z`
               }
-            }
-          })
+            },
+          });
+          refetch();
         }}>SUBMIT</button>
       </div>
     </section>
