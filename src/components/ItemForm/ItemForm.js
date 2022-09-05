@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ItemForm.css';
 import { useMutation } from '@apollo/client';
-import { CREATE_ITEM } from '../../graphql/queries';
+import { CREATE_ITEM } from '../../graphql/mutations';
 
 const ItemForm = () => {
 
