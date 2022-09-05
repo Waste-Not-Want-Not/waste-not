@@ -14,6 +14,28 @@ const ItemForm = ({refetch}) => {
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
   
   if (loading) return <h2>LOADING...</h2>
+
+  const clearInputs = () => {
+    setName('');
+    setLocation('');
+    setDate('');
+  }
+
+  const handleClick = () => {
+    createItem({ 
+      variables: {
+        input: {
+          userId: 1,
+          name,
+          location, 
+          expirationDate: `${date}T00:00:00Z`
+        }
+      },
+    });
+    refetch();
+    alert(`${name} was added to the ${location}!`)
+    clearInputs();
+  }
   
   return (
     <section>
@@ -38,19 +60,7 @@ const ItemForm = ({refetch}) => {
           value={date}
           onChange={event => setDate(event.target.value)}
         />
-        <button onClick={()=> {
-          createItem({ 
-            variables: {
-              input: {
-                userId: 1,
-                name,
-                location, 
-                expirationDate: `${date}T00:00:00Z`
-              }
-            },
-          });
-          refetch();
-        }}>SUBMIT</button>
+        <button onClick={() => handleClick()}>SUBMIT</button>
       </div>
     </section>
     )
