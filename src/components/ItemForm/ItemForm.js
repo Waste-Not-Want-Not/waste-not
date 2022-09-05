@@ -28,12 +28,23 @@ const ItemForm = () => {
           <option value='freezer'>Freezer</option>
         </select>
         <input 
-          type='text'
+          type='date'
           placeholder='Expiration Date/Expected Expiration Date'
           value={date}
           onChange={event => setDate(event.target.value)}
         />
-        <button>SUBMIT</button>
+        <button onClick={()=> {
+          createItem({ 
+            variables: {
+              input: {
+                userId: 1,
+                name,
+                location, 
+                expirationDate: `${date}T00:00:00Z`
+              }
+            }
+          })
+        }}>SUBMIT</button>
       </form>
     </section>
   )
