@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('kitchen', () => {
 
   Cypress.Commands.add(
     "interceptGQL",
