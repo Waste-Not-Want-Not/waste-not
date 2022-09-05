@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './ItemForm.css';
+import { useMutation } from '@apollo/client';
+import { CREATE_ITEM } from '../../graphql/queries';
 
 const ItemForm = () => {
 
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
+
+  const [createItem, {data, loading, error, refetch}] = useMutation(CREATE_ITEM);
 
   return (
     <section>
@@ -18,9 +22,10 @@ const ItemForm = () => {
           onChange={event => setName(event.target.value)}
         />
         <select value={location} onChange={event => setLocation(event.target.value)}>
-          <option>Pantry</option>
-          <option>Fridge</option>
-          <option>Freezer</option>
+          <option value='kitchen'>Select a location</option>
+          <option value='pantry'>Pantry</option>
+          <option value='fridge'>Fridge</option>
+          <option value='freezer'>Freezer</option>
         </select>
         <input 
           type='text'
