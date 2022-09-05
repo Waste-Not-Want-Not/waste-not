@@ -23,10 +23,9 @@ const Donations = () => {
   if (data) {
     return ( 
       <section>
-        <h3>Donations</h3>
+        <h3 className='donations-heading'>Donations</h3>
         {getDonations()}
       </section>
-
     )
   }
 }

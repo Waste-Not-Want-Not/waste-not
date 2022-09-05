@@ -1,0 +1,25 @@
+.food-bank-form-container {
+  width: 40vw;
+}
+
+.food-bank-heading {
+  text-align: center;
+}
+
+.food-bank-form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: .5rem;
+}
+
+.submit-button {
+  margin: .5rem;
+}
+
+.food-bank-info {
+  text-align: center;
+  font-size: 1rem;
+}

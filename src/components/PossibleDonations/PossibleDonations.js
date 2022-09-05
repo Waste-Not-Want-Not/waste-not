@@ -29,7 +29,9 @@ const PossibleDonations = () => {
      <section className="possible-donation-container">
        <div className='location'>
          <h3>Possible Donations</h3>
-         {itemCards}
+         <div className='location-items'>
+          {itemCards}  
+         </div>
        </div>
      </section>
    )

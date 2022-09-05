@@ -42,9 +42,10 @@ const Location = ({kitchenLocation}) => {
 
     return (
       <section className="location-container">
-        {console.log()}
         <div className='location'>
           <h3>{kitchenLocation.toUpperCase()}</h3>
+        </div>
+        <div className='location-items'>
           {itemCards}
         </div>
       </section>

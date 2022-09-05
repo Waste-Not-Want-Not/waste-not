@@ -37,38 +37,38 @@ const Kitchen = () => {
 
     return (
       <section className='kitchen-container'>
-        <button>ADD NEW FOOD</button>
+        <button className='kitchen-button'>ADD NEW FOOD</button>
         <article className='kitchen'>
           <div className='pantry'>
-            <div className='location-link'>
-              <NavLink to='/pantry'>
-                <img className='location-img' src={Pantry} alt='pantry'/>
+            <NavLink to='/pantry'>
+              <div className='location-link'>
                 <h3>Pantry</h3>
-              </NavLink>
-            </div>
+                <img className='location-img' src={Pantry} alt='pantry'/>
+              </div>
+            </NavLink>
             {getKitchen('pantry')}
           </div>
           <div className='fridge'>
-            <div className='location-link'>
-              <NavLink to='/fridge'>
-                <img className='location-img' src={Fridge} alt='fridge'/>
+            <NavLink to='/fridge'>
+              <div className='location-link'>
                 <h3>Fridge</h3>
-              </NavLink>
-            </div>
+                <img className='location-img' src={Fridge} alt='fridge'/>
+              </div>
+            </NavLink>
             {getKitchen('fridge')}
           </div>
           <div className='freezer'>
-            <div className='location-link'>
-              <NavLink to='/freezer'>
-                <img className='location-img' src={Freezer} alt='freezer'/>
+            <NavLink to='/freezer'>
+              <div className='location-link'>
                 <h3>Freezer</h3>
-              </NavLink>
-            </div>
+                  <img className='location-img' src={Freezer} alt='freezer'/>
+              </div>
+            </NavLink>
             {getKitchen('freezer')}
           </div>
         </article>
         <NavLink to='/expiring'>
-          <button>SHOW POSSIBLE DONATIONS</button>
+          <button className='kitchen-button'>SHOW POSSIBLE DONATIONS</button>
         </NavLink>
       </section>
     ) 
