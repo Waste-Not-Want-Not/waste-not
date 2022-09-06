@@ -37,7 +37,7 @@ const Location = ({kitchenLocation}) => {
       const date2 = new Date(b.expirationDate);
       return date1 - date2
     }).map(item => {
-      return <ItemCard item={item} key={item.id}/>
+      return <ItemCard item={item} key={Math.random()}/>
     })
 
     return (
