@@ -40,7 +40,8 @@ const ItemCard = ({ item, refetch }) => {
     <article className="item-card-container">
       <p className="expiration">Expiration Date: {dayjs(item.expirationDate).format('dddd, MMMM DD, YYYY')}</p>
       <div className="item-card">
-        {/* <img src={image} alt={name}/> */}
+        {console.log(item.image)}
+        <img className="item-image" src={item.image} alt={item.name}/>
         <div className='item-details'>
           <p>{item.name}</p>
           <p>Location: {item.location}</p>

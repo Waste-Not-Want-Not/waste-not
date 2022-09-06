@@ -15,6 +15,7 @@ const Location = ({kitchenLocation}) => {
               name
               expirationDate
               location
+              image
           }
         }
       }
