@@ -9,7 +9,7 @@ const ItemForm = ({refetch}) => {
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
 
-  const [createItem, { data, loading, error}] = useMutation(CREATE_ITEM);
+  const [createItem, {loading, error}] = useMutation(CREATE_ITEM);
 
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
   
@@ -40,7 +40,6 @@ const ItemForm = ({refetch}) => {
   return (
     <section>
       <h2>Update/Add Food</h2>
-      {console.log(data)}
       <div>
         <input 
           type='text'

@@ -19,7 +19,7 @@ const Location = ({kitchenLocation}) => {
         }
       }
     `
-  const {loading, data, error} = useQuery( GET_ITEMS_BY_LOCATION_QUERY, {
+  const {loading, data, error, refetch} = useQuery( GET_ITEMS_BY_LOCATION_QUERY, {
      variables: { id: 1 }
   })
 
@@ -37,7 +37,7 @@ const Location = ({kitchenLocation}) => {
       const date2 = new Date(b.expirationDate);
       return date1 - date2
     }).map(item => {
-      return <ItemCard item={item} key={item.id}/>
+      return <ItemCard item={item} key={Math.random()} refetch={refetch}/>
     })
 
     return (

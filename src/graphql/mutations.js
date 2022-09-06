@@ -16,3 +16,12 @@ export const CREATE_ITEM = gql`
     }
   }
 `;
+
+export const DELETE_ITEM = gql`
+  mutation deleteItem($input: DeleteItemInput!) {
+    deleteItem(input: $input) {
+     id
+     errors 
+    }
+  }
+`
