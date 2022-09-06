@@ -9,13 +9,16 @@ const ItemCard = ({ item }) => {
   const [deleteItem, {loading, error}] = useMutation(DELETE_ITEM);
 
   const getItemId = () => {
+    console.log(item.id)
+    
     deleteItem({
       variables: {
         input: {
-          id: item.id
+          id: Number(item.id)
         }
       }
     })
+
   }
 
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
