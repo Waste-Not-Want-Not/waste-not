@@ -1,4 +1,4 @@
-import data from '../fixtures/kitchen.json'
+import data from '../fixtures/kitchen_data.json'
 
 describe('kitchen', () => {
     
@@ -58,6 +58,15 @@ describe('kitchen', () => {
     cy.get('button').eq(2).contains('DONATION PAGE')
   })
 
+  it('should have pantry, fridge and freezer item previews', () => {
+    const items = data;
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items);
+    cy.get('button').first().click()
+    cy.get('.pantry').contains('Wheat')
+    cy.get('.fridge').contains('Plums')
+    cy.get('.freezer').contains('Incaberries')
+  })
+
   it('should have and be able to submit form', () => {
 
     const items = data;
@@ -78,10 +87,9 @@ describe('kitchen', () => {
         }
     }})
 
-    const newItems = {...data}
+    const newItems = {...items}
     newItems.data.getUserById.items.push(newItem)
 
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items);
     cy.get('button').first().click()
     cy.get('input[type="text"]').type('potatoes')
     cy.get('select').select('pantry')
@@ -90,5 +98,24 @@ describe('kitchen', () => {
     cy.get('button').eq(3).click()
     cy.wait(1000)
     cy.get('.pantry').first().contains('potatoes')
+  })
+
+  it('should be able to go to pantry, fridge and freezer pages', () => {
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", data); //not working with multiple fetch calls
+    cy.get('button').first().click()
+    cy.get('.location-link').first().click()
+    cy.url().should('eq', 'http://localhost:3000/pantry')
+    cy.go('back')
+    cy.get('.location-link').eq(1).click()
+    cy.url().should('eq', 'http://localhost:3000/fridge')
+    cy.go('back')
+    cy.get('.location-link').eq(2).click()
+    cy.url().should('eq', 'http://localhost:3000/freezer')
+  })
+
+  it('should show an error if error occurs during network request',() => {
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", {}); 
+    cy.get('button').first().click()
+    cy.contains('Technical difficulties, please visit us later.')
   })
 })

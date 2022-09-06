@@ -1,4 +1,4 @@
-import data from '../fixtures/kitchen.json'
+import data from '../fixtures/kitchen_data.json'
 
 describe('overview',() => {
 
