@@ -1,15 +1,13 @@
 import "./ItemCard.css";
 import { useMutation } from '@apollo/client';
-import { DELETE_ITEM } from '../../graphql/mutations';
+import { DELETE_ITEM, UPDATE_ITEM } from '../../graphql/mutations';
 const dayjs = require('dayjs');
-
 
 const ItemCard = ({ item, refetch }) => {
 
   const [deleteItem, {loading, error}] = useMutation(DELETE_ITEM);
 
   const getItemId = () => {
-    console.log(item.id)
     
     deleteItem({
       variables: {
@@ -18,13 +16,27 @@ const ItemCard = ({ item, refetch }) => {
         }
       }
     })
-
     refetch();
   }
 
-  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+  const [updateItem, {updateLoading, updateError}] = useMutation(UPDATE_ITEM);
+
+  const updateForDonation = () => {
+    console.log(item.forDonation)
+    updateItem({
+      variables: {
+        input: {
+          id: Number(item.id)
+        }
+      }
+    })
+    alert(`${item.name} is ready for donation.  Confirm this donation on the donation page.`);
+    console.log(item);
+  }
+
+  if (error || updateError) return <h1>Technical difficulties, please visit us later.</h1>
   
-  if (loading) return <h2>LOADING...</h2>
+  if (loading || updateLoading) return <h2>LOADING...</h2>
 
   return (
     <article className="item-card-container">
@@ -37,7 +49,7 @@ const ItemCard = ({ item, refetch }) => {
         </div>
         <div>
           <button className="ate-button" onClick={() => getItemId()}>ATE</button>
-          <button className="donate-button">DONATE</button>
+          <button className="donate-button" onClick={() => updateForDonation()}>DONATE</button>
         </div>
       </div>
     </article>

@@ -11,7 +11,7 @@ const Donations = () => {
 
   const getDonations = () => {
     const donations = data.getUserById.donationItems.map((item) => {
-      return <Donation key={item.name} item={item} />
+      return <Donation key={Math.random()} item={item} />
     })
     return donations
   }
