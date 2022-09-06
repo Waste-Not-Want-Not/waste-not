@@ -81,12 +81,18 @@ describe('Possible Donations Page', () => {
   it('should have a section for donation items and a section for a food bank form.', () => {
     cy.get('h3').should('have.length', 2)
     cy.get('.food-bank-heading').contains('Food Banks')
+    cy.get('.food-bank-form').should('exist')
+    cy.get('.item-card-container').should('have.length', 3)
     cy.get('.donations-heading').contains('Donations')
   })
 
-  it('should accept user input in the food bank form', () => {
+  it('should accept user input in the food bank form.', () => {
     cy.get('.food-bank-form').should('exist')
     cy.get('input').should('have.attr', 'placeholder', 'City, State')
     cy.get('input').type('Denver, CO').should('have.value', 'Denver, CO')
   })
+
+  // it('should have items to donate', () => {
+
+  // })
 })
