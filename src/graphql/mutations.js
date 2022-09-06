@@ -24,4 +24,21 @@ export const DELETE_ITEM = gql`
      errors 
     }
   }
-`
+`;
+
+export const UPDATE_ITEM = gql`
+  mutation updateForDonation($input: UpdateForDonationInput!) {
+    updateForDonation(input: $input) {
+    item {
+      name
+      location
+      expirationDate
+      userId
+      image
+      id
+      forDonation
+    }
+    errors 
+    }
+  }
+`;
