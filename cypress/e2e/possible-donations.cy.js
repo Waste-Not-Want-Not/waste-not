@@ -96,6 +96,10 @@ describe('Possible Donations Page', () => {
     cy.get('[href="/mykitchen"] > .nav-button').contains('MY KITCHEN')
   })
 
+  it('should have a page heading of Possible Donations', () => {
+    cy.get('h3').contains('Possible Donations')
+  })
+
   it('should have items that have already expirerd or are going to expire soon', () => {
     cy.get('.item-card-container').should('have.length', 6)
     cy.get('.item-card').first().contains('Cauliflower')
@@ -109,4 +113,15 @@ describe('Possible Donations Page', () => {
     cy.get('.item-card').find('.donate-button').should('have.length', 6)
   })
 
+  // it.only('should inform the user that the page is loading prior to the data rendering', () => {
+  //   cy.visit('http://localhost:3000/mykitchen')
+  //   cy.get('.kitchen-button').click()
+  //   cy.get('h2')
+  // })
+
+  it('should display an error message if network request fails' , () => {
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById")
+    cy.visit('http://localhost:3000/expiring')
+    cy.get('.error-message').should('have.text', 'Technical difficulties, please visit us later.')
+  })
 })
