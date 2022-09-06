@@ -3,8 +3,11 @@ describe('overview',() => {
         cy.visit('http://localhost:3000/')
     })
 
-    it('should have a title', () => {
+    it('should have correct header', () => {
         cy.get('.title').contains('Waste Not, Want Not')
+        cy.get('button').first().contains('MY KITCHEN')
+        cy.get('button').eq(1).contains('Overview')
+        cy.get('button').eq(2).contains('DONATION PAGE')
     })
 
     it('should have correct overview information', () => {
@@ -14,4 +17,8 @@ describe('overview',() => {
         cy.get('h1').contains("Let's work together to mitigate food waste!")
     })
 
+    it('should have button to continue to kitchen',() => {
+        cy.get('button').last().contains('Continue To Your Kitchen').click()
+        cy.url().should('eq', 'http://localhost:3000/mykitchen')
+    })
 })
