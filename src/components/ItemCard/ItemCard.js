@@ -22,7 +22,6 @@ const ItemCard = ({ item, refetch }) => {
   const [updateItem, {updateLoading, updateError}] = useMutation(UPDATE_ITEM);
 
   const updateForDonation = () => {
-    console.log(item.forDonation)
     updateItem({
       variables: {
         input: {
@@ -31,7 +30,6 @@ const ItemCard = ({ item, refetch }) => {
       }
     })
     alert(`${item.name} is ready for donation.  Confirm this donation on the donation page.`);
-    console.log(item);
   }
 
   if (error || updateError) return <h1>Technical difficulties, please visit us later.</h1>

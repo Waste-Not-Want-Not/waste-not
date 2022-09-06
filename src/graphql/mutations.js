@@ -46,7 +46,7 @@ export const UPDATE_ITEM = gql`
 export const DELETE_DONATION_ITEMS = gql`
   mutation deleteDonationItems($input: DeleteDonationItemsInput!) {
     deleteDonationItems(input: $input) {
-     userId
+     message
      errors 
     }
   }
