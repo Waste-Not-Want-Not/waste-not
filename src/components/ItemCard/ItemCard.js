@@ -4,7 +4,7 @@ import { DELETE_ITEM } from '../../graphql/mutations';
 const dayjs = require('dayjs');
 
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, refetch }) => {
 
   const [deleteItem, {loading, error}] = useMutation(DELETE_ITEM);
 
@@ -19,6 +19,7 @@ const ItemCard = ({ item }) => {
       }
     })
 
+    refetch();
   }
 
   if (error) return <h1>Technical difficulties, please visit us later.</h1>

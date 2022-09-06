@@ -5,7 +5,7 @@ import { GET_ITEMS_QUERY } from '../../graphql/queries';
 
 const PossibleDonations = () => {
 
-  const {loading, data, error} = useQuery( GET_ITEMS_QUERY, {
+  const {loading, data, error, refetch} = useQuery( GET_ITEMS_QUERY, {
     variables: { id: 1 }
  })
 
@@ -15,6 +15,7 @@ const PossibleDonations = () => {
 
  if (data) {
 
+  
    let newItems = [...data.getUserById.items];
    
    let itemCards = newItems.sort((a, b) => {
@@ -22,7 +23,8 @@ const PossibleDonations = () => {
      const date2 = new Date(b.expirationDate);
      return date1 - date2
    }).map(item => {
-     return <ItemCard item={item} key={Math.random()}/>
+      console.log(item.id);
+     return <ItemCard item={item} key={Math.random()} refetch={refetch}/>
    }).splice(0, 10)
 
    return (
