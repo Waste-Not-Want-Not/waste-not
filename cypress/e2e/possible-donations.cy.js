@@ -95,4 +95,18 @@ describe('Possible Donations Page', () => {
     cy.get('.navbar').find('button').should('have.length', 3)
     cy.get('[href="/mykitchen"] > .nav-button').contains('MY KITCHEN')
   })
+
+  it('should have items that have already expirerd or are going to expire soon', () => {
+    cy.get('.item-card-container').should('have.length', 6)
+    cy.get('.item-card').first().contains('Cauliflower')
+    cy.get('.item-card').last().contains('Location: freezer')
+    cy.get(':nth-child(2) > .expiration').contains('Expiration Date: Tuesday, August 02, 2022')
+    cy.get(':nth-child(5) > .expiration').contains('Expiration Date: Tuesday, August 30, 2022')
+  })
+
+  it('shave have an Ate and Donate button on every item card', () => {
+    cy.get('.item-card').find('.ate-button').should('have.length', 6)
+    cy.get('.item-card').find('.donate-button').should('have.length', 6)
+  })
+
 })
