@@ -10,6 +10,7 @@ query getUserById($id: ID!) {
           name
           expirationDate
           location
+          image
       }
     }
   }
