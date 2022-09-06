@@ -72,9 +72,21 @@ describe('Possible Donations Page', () => {
     cy.visit('http://localhost:3000/donations')
   })
 
-  it('should have a Navbar with a heading, and three different navigation buttons', () => {
+  it('should have a Navbar with a heading, and three different navigation buttons.', () => {
     cy.get('.title').contains('Waste Not, Want Not')
     cy.get('.navbar').find('button').should('have.length', 3)
-    cy.get('[href="/mykitchen"] > .nav-button').contains('MY KITCHEN')
+    cy.get('.nav-header > .active > button').contains('Overview')
+  })
+
+  it('should have a section for donation items and a section for a food bank form.', () => {
+    cy.get('h3').should('have.length', 2)
+    cy.get('.food-bank-heading').contains('Food Banks')
+    cy.get('.donations-heading').contains('Donations')
+  })
+
+  it('should accept user input in the food bank form', () => {
+    cy.get('.food-bank-form').should('exist')
+    cy.get('input').should('have.attr', 'placeholder', 'City, State')
+    cy.get('input').type('Denver, CO').should('have.value', 'Denver, CO')
   })
 })
