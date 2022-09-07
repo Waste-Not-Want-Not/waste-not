@@ -32,11 +32,7 @@ const Kitchen = () => {
       }).map((item) => {
         return <Preview key={item.name} item={item} />
       })
-      if (sortedPreviews.length > 5) {
         return sortedPreviews.splice(0,5)
-      } else {
-        return sortedPreviews
-      }
     }
 
     return (

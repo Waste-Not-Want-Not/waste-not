@@ -16,7 +16,7 @@ const FoodBankForm = () => {
 
   const handleClick = event => {
     event.preventDefault();
-      if (states.forEach(state => inputLocation.includes(state))) {
+      if (!states.some(state => inputLocation.includes(state))) {
         alert('Please submit a valid city and state!')
       } else {
         getLocation({
