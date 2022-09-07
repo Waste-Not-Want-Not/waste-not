@@ -30,6 +30,7 @@ const FoodBankForm = () => {
       <article className='food-bank-info'>
         {data && (
           <>
+          {console.log(data)}
             <p>Name:{data.getFoodBank.name} </p>
             <p>Address: {data.getFoodBank.address} </p>
             <p>Phone #: {data.getFoodBank.phoneNumber} </p>

@@ -92,9 +92,28 @@ describe('Possible Donations Page', () => {
     cy.get('input').type('Denver, CO').should('have.value', 'Denver, CO')
   })
 
-  it('should have items to donate', () => {
+  it('should have items to donate.', () => {
     cy.get('.item-card-container').first().contains('2022-09-24T00:00:00Z')
     cy.get('.donations-page > :nth-child(2) > :nth-child(3)').contains('Green Tea')
     cy.get('.item-card-container').last().contains('Location: freezer')
+  })
+
+  it('should be able to look up information for a food bank based on the city and state', () => {
+    cy.get('input').type('Denver, CO')
+    const foodBank = {
+      "data": {
+        "getFoodBank": {
+          "address": "10700 E 45th Ave, Denver, CO 80239",
+          "directions": "Directions: Start out going south on N Sherman St toward E 13th Ave, and continue for 0.109 Miles, Turn right onto E 13th Ave, and continue for 0.581 Miles, Turn right onto N Speer Blvd, and continue for 1.482 Miles, Merge onto I-25 N/US-85 N/US-6 E/US-87 N toward Ft Collins, and continue for 1.348 Miles, Merge onto I-70 E via EXIT 214A toward Limon, and continue for 7.496 Miles, Take the Havana Street exit, EXIT 280, and continue for 0.193 Miles, Merge onto Havana St, and continue for 0.31 Miles, Turn right onto E 45th Ave, and continue for 0.487 Miles, EAST 45TH AVENUE, and continue for 0 Miles",
+          "name": "Food Bank of the Rockies",
+          "phoneNumber": "(303) 371-9250"
+        }
+      }
+    }
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getFoodBank", foodBank)
+    cy.get('.submit-button').click()
+    cy.get('.food-bank-info').contains('Food Bank of the Rockies')
+    cy.get('.food-bank-info').contains('(303) 371-9250')
+    cy.get('.food-bank-info').contains('10700 E 45th Ave, Denver, CO 80239')
   })
 })
