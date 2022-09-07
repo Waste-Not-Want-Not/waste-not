@@ -92,7 +92,9 @@ describe('Possible Donations Page', () => {
     cy.get('input').type('Denver, CO').should('have.value', 'Denver, CO')
   })
 
-  it.only('should have items to donate', () => {
-    cy.get('.item-card-container').first()
+  it('should have items to donate', () => {
+    cy.get('.item-card-container').first().contains('2022-09-24T00:00:00Z')
+    cy.get('.donations-page > :nth-child(2) > :nth-child(3)').contains('Green Tea')
+    cy.get('.item-card-container').last().contains('Location: freezer')
   })
 })
