@@ -98,7 +98,25 @@ describe('Possible Donations Page', () => {
     cy.get('.item-card-container').last().contains('Location: freezer')
   })
 
-  it('should be able to look up information for a food bank based on the city and state', () => {
+  it('should be able to confirm donations, which will delete the items from the donation page.', () => {
+    const deleteDonationItems = {
+      "data": {
+        "getUserById": {
+          "name": "Edward Schaden",
+          "email": "joetta.adams@wolf-grimes.name",
+          "donationItems": [ ]
+        }
+      }
+    }
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", deleteDonationItems)
+    cy.get('.confirm-donations-button').click()
+    cy.get('.item-card-container').should('have.length', 0)
+    cy.get('.donations-container').should('not.contain', '2022-09-24T00:00:00Z')
+    cy.get('.donations-container').should('not.contain', 'Gree Tea')
+    cy.get('.donations-container').should('not.contain', 'Location: freezer')
+  })
+
+  it('should be able to look up information for a food bank based on the city and state.', () => {
     cy.get('input').type('Denver, CO')
     const foodBank = {
       "data": {
@@ -134,5 +152,11 @@ describe('Possible Donations Page', () => {
     cy.get('.food-bank-info').contains('Central Texas Food Bank')
     cy.get('.food-bank-info').contains('(512) 282-2111')
     cy.get('.food-bank-info').contains('Start out going east on W 2Nd St toward Colorado St, and continue for 0.067 Miles, Turn right onto Colorado St, and continue for 0.067 Miles, Turn left onto W Cesar Chavez St, and continue for 0.57 Miles, Turn right onto N Interstate 35, and continue for 0.103 Miles, Merge onto I-35 S/US-290 W via the ramp on the left, and continue for 2.715 Miles, Merge onto TX-71 E via EXIT 230 toward Bastrop, and continue for 1.371 Miles, Take the exit toward Montopolis Dr, and continue for 0.355 Miles, Merge onto E Ben White Blvd, and continue for 1.063 Miles, Turn right onto Montopolis Dr, and continue for 0.504 Miles, Turn left onto Burleson Rd, and continue for 0.454 Miles, Turn left onto Metropolis Dr, and continue for 0.082 Miles, 6500 METROPOLIS DR is on the left, and continue for 0 Miles')
+  })
+
+  it('should display an error message if network request fails.' , () => {
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById")
+    cy.visit('http://localhost:3000/expiring')
+    cy.get('.error-message').should('have.text', 'Technical difficulties, please visit us later.')
   })
 })
