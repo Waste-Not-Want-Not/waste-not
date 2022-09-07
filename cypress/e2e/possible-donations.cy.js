@@ -72,29 +72,29 @@ describe('Possible Donations Page', () => {
     cy.get('.item-card').first().should('not.contain', 'Cauliflower')
   })
 
-  it('should allow the user to send food to the donation page', () => {
-    cy.get('.item-card').first().find('.donate-button').click()
-    const donationItem = {
-      "data": {
-        "getUserById": {
-          "name": "Edward Schaden",
-          "email": "joetta.adams@wolf-grimes.name",
-          "donationItems": [ 
-            {
-              "id": 1,
-              "expirationDate": "2022-05-11T00:00:00Z",
-              "location": "fridge",
-              "name": "Cauliflower",
-              "forDonation": false
-            }
-          ]
-        }
-      }
-    }
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
-    cy.visit('http://localhost:3000/donations')
-    cy.get('.item-card-container').contains('Cauliflower')
-  })
+  // it('should allow the user to send food to the donation page', () => {
+  //   cy.get('.item-card').first().find('.donate-button').click()
+  //   const donationItem = {
+  //     "data": {
+  //       "getUserById": {
+  //         "name": "Edward Schaden",
+  //         "email": "joetta.adams@wolf-grimes.name",
+  //         "donationItems": [ 
+  //           {
+  //             "id": 1,
+  //             "expirationDate": "2022-05-11T00:00:00Z",
+  //             "location": "fridge",
+  //             "name": "Cauliflower",
+  //             "forDonation": false
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   }
+  //   cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
+  //   cy.visit('http://localhost:3000/donations')
+  //   cy.get('.item-card-container').contains('Cauliflower')
+  // })
 
   // it('should display an error message if network request fails.' , () => {
   //   cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById")
