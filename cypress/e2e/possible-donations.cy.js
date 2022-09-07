@@ -71,7 +71,8 @@ describe('Possible Donations Page', () => {
     cy.get('.item-card').should('have.length', 5)
     cy.get('.item-card').first().should('not.contain', 'Cauliflower')
   })
-
+  
+  // TEST
   // it('should allow the user to send food to the donation page', () => {
   //   cy.get('.item-card').first().find('.donate-button').click()
   //   const donationItem = {
