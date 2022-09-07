@@ -48,6 +48,7 @@ describe('Test Pantry View',() => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData ).as("GetFridgeItems")
     cy.wait("@GetFridgeItems")
     cy.visit('http://localhost:3000/fridge');
+    cy.get(".title").contains("Waste Not, Want Not")
   });
 
   it('should have correct title', () => {
