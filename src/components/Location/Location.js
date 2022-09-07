@@ -16,6 +16,7 @@ const Location = ({kitchenLocation}) => {
               expirationDate
               location
               image
+              forDonation
           }
         }
       }
