@@ -1,0 +1,46 @@
+{
+    "data": {
+        "getUserById": {
+            "name": "Edward Schaden",
+            "email": "joetta.adams@wolf-grimes.name",
+            "items": [
+                {
+                    "name": "Kudzu",
+                    "expirationDate": "2022-09-11T00:00:00Z",
+                    "location": "pantry",
+                    "forDonation": false
+                },
+                {
+                    "name": "Wheat",
+                    "expirationDate": "2022-09-08T00:00:00Z",
+                    "location": "pantry",
+                    "forDonation": false
+                },
+                {
+                    "name": "Incaberries",
+                    "expirationDate": "2022-09-29T00:00:00Z",
+                    "location": "freezer",
+                    "forDonation": false
+                },
+                {
+                    "name": "Plums",
+                    "expirationDate": "2022-09-09T00:00:00Z",
+                    "location": "freezer",
+                    "forDonation": false
+                },
+                {
+                    "name": "White Wine Vinegar",
+                    "expirationDate": "2022-09-07T00:00:00Z",
+                    "location": "fridge",
+                    "forDonation": false
+                },
+                {
+                    "name": "Plums",
+                    "expirationDate": "2022-09-07T00:00:00Z",
+                    "location": "fridge",
+                    "forDonation": false
+                }
+            ]
+        }
+    }
+}
