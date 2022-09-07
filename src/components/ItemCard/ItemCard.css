@@ -25,3 +25,9 @@
   padding: 1rem;
   margin: 1rem;
 }
+
+.item-image {
+  height:7rem;
+  width:7rem;
+  border-radius: 10%;
+}
