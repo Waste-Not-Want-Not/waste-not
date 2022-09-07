@@ -6,9 +6,11 @@ query getUserById($id: ID!) {
       name
       email
       items {
+          id
           name
           expirationDate
           location
+          image
       }
     }
   }
@@ -20,6 +22,7 @@ query getUserById($id: ID!) {
       name
       email
       donationItems {
+          id
           name
           expirationDate
           location
