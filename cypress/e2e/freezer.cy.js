@@ -51,6 +51,10 @@ describe('Test Pantry View',() => {
     cy.get(".title").contains("Waste Not, Want Not")
   });
 
+  afterEach(() => {
+    cy.visit('http://localhost:3000/freezer');
+  })
+
   it('should have correct title', () => {
       cy.get("h3").contains("FREEZER");
   });
