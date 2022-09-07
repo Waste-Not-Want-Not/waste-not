@@ -31,7 +31,7 @@ const FoodBankForm = () => {
 
   return (
     <section className='food-bank-form-container'>
-      <h3 className='food-bank-heading'>Food Banks</h3>
+      <h2 className='food-bank-heading'>Food Banks</h2>
       <form className='food-bank-form' onSubmit={(event) => handleClick(event)}>
         <input 
           type='text'
