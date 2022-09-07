@@ -44,12 +44,11 @@ describe('Test Pantry View',() => {
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData );
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData )
     cy.visit('http://localhost:3000/freezer');
   });
 
   it('should have correct title', () => {
-      cy.wait(500)
       cy.get("h3").contains("FREEZER");
   });
 
