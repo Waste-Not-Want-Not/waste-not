@@ -20,9 +20,7 @@ const Kitchen = () => {
   if (loading) return <h2>LOADING...</h2>
   
   if (data) {
-
-    // refetch();
-
+    
     let newItems = [...data.getUserById.items];
   
     const getKitchen = (location) => {

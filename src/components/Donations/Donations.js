@@ -20,17 +20,15 @@ const Donations = () => {
   }
 
   const handleClick = () => {
-    console.log(data.getUserById.donationItems)
     deleteItems({
       variables: {
         input: {
-          id:1 //refers to userId not item id
+          id:1
         }
       }
     })
     alert('Donations comfirmed!')
-    refetch()
-    console.log(data.getUserById.donationItems)
+    refetch();
   }
 
   if (error || deleteError) return <h1>Technical difficulties, please visit us later.</h1>
