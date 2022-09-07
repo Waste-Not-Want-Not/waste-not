@@ -33,7 +33,7 @@ describe('Test Pantry View',() => {
 
   it('be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
-    cy.get(".item-card").first().should("not.contain","Mozzarella");
+    cy.get(".item-card-container").first().should("not.contain","Mozzarella");
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
   });
 
