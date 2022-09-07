@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className='nav-header'>
         <h1 className='title'>Waste Not, Want Not</h1>
         <NavLink to='/'>
-          <button>Overview</button>
+          <button className='overview-button'>Overview</button>
         </NavLink>
       </div>
       <NavLink to='/donations'>
