@@ -20,7 +20,6 @@ const Donations = () => {
   }
 
   const handleClick = () => {
-    console.log(data.getUserById.donationItems)
     deleteItems({
       variables: {
         input: {
@@ -40,8 +39,8 @@ const Donations = () => {
   if (data) {
     return ( 
       <section className='donations-container'>
-        <h3 className='donations-heading'>Donations</h3>
-        {getDonations()}
+        <h2 className='donations-heading'>Donations</h2>
+        {getDonations().length ? getDonations(): <h3>No Donations</h3>}
         <button className='confirm-donations-button' onClick={() => handleClick()}>Confirm All Donations</button>
       </section>
     )

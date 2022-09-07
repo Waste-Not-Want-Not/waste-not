@@ -2,3 +2,9 @@
   text-align: center;
   width: 40vw;
 }
+
+.donations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
