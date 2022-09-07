@@ -1,46 +1,6 @@
 import freezerData from "../fixtures/freezer_location.json"
 
 describe('Test Pantry View',() => {
-  Cypress.Commands.add(
-    "interceptGQL",
-    (
-      url,
-      operation,
-      data,
-      alias
-    ) => {
-      // Retrieve any previously registered interceptions.
-      const previous = Cypress.config("interceptions");
-      const alreadyRegistered = url in previous;
-  
-      const next = {
-        ...(previous[url] || {}),
-        [operation]: { alias, data },
-      };
-  
-      // Merge in the new interception.
-      Cypress.config("interceptions", {
-        ...previous,
-        [url]: next,
-      });
-  
-      // No need to register handler more than once per URL. Operation data is
-      // dynamically chosen within the handler.
-      if (alreadyRegistered) {
-        return;
-      }
-  
-      cy.intercept("POST", url, (req) => {
-        const interceptions = Cypress.config("interceptions");
-        const match = interceptions[url]?.[req.body.operationName];
-  
-        if (match) {
-          req.alias = match.alias;
-          req.reply({ body: match.data });
-        }
-      });
-    }
-  );
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
@@ -49,10 +9,6 @@ describe('Test Pantry View',() => {
     cy.wait('@GetFreezerData')
     // cy.visit('http://localhost:3000/freezer');
   });
-
-  afterEach(() => {
-    cy.visit('http://localhost:3000/freezer');
-  })
 
   it('should have correct title', () => {
       cy.get("h3").contains("FREEZER");
@@ -77,13 +33,36 @@ describe('Test Pantry View',() => {
   });
 
   it('be able to donate item', () => {
+
+    const donationItem = {
+      "data": {
+        "getUserById": {
+          "name": "Edward Schaden",
+          "email": "joetta.adams@wolf-grimes.name",
+          "donationItems": [ 
+            {
+              "name": "Chicken",
+              "expirationDate": "2022-09-03T00:00:00Z",
+              "location": "pantry",
+              "forDonation": false,
+              "id":24
+          }
+          ]
+        }
+      }
+    }
+
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
+    cy.get('button').eq(2).click()
+    cy.contains('Chicken')
+
   });
 
   it('be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
+    cy.get(".item-card").first().should("not.contain","Chicken");
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
   });
-
 });
