@@ -44,7 +44,9 @@ describe('Test Pantry View',() => {
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", pantryData );
+    cy.visit('http://localhost:3000/pantry');
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", pantryData ).as("GetPantryItems")
+    cy.wait("@GetPantryItems")
     cy.visit('http://localhost:3000/pantry');
   });
 

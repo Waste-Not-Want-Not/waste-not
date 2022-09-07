@@ -44,7 +44,9 @@ describe('Test Pantry View',() => {
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData );
+    cy.visit('http://localhost:3000/fridge');
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData ).as("GetFridgeItems")
+    cy.wait("@GetFridgeItems")
     cy.visit('http://localhost:3000/fridge');
   });
 
@@ -74,7 +76,25 @@ describe('Test Pantry View',() => {
   });
 
   it('be able to donate item', () => {
+      const donationItem = {
+      "data": {
+        "getUserById": {
+          "name": "Edward Schaden",
+          "email": "joetta.adams@wolf-grimes.name",
+          "donationItems": [ 
+            {
+              "id": 1,
+              "expirationDate": "2022-05-11T00:00:00Z",
+              "location": "fridge",
+              "name": "Cauliflower",
+              "forDonation": true
+            }
+          ]
+        }
+      }
+    }
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", donationItem )
+    // cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData )
   });
 });
