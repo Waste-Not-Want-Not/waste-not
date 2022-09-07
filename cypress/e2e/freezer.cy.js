@@ -48,7 +48,6 @@ describe('Test Pantry View',() => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData ).as('GetFreezerData')
     cy.wait('@GetFreezerData')
     // cy.visit('http://localhost:3000/freezer');
-    cy.get(".title").contains("Waste Not, Want Not")
   });
 
   afterEach(() => {
@@ -60,6 +59,7 @@ describe('Test Pantry View',() => {
   });
 
   it('should have correct item card with buttons', () => {
+    cy.get(".title").contains("Waste Not, Want Not")
     cy.get(".item-card").first().contains("Chicken");
     cy.get(".item-card").first().contains("Location: freezer");
     cy.get(".expiration").first().contains("Expiration Date: Saturday, September 03, 2022");
@@ -68,6 +68,7 @@ describe('Test Pantry View',() => {
 });
 
   it('should have another correct item card with buttons', () => {
+    cy.get(".title").contains("Waste Not, Want Not")
     cy.get(".item-card").eq(1).contains("Peas");
     cy.get(".item-card").eq(1).contains("Location: freezer");
     cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
