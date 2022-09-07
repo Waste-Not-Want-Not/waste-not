@@ -3,34 +3,34 @@
       "getUserById": {
         "name": "Edward Schaden",
         "email": "joetta.adams@wolf-grimes.name",
-        "fridgeItems": [
+        "items": [
           {
               "name": "Lettuce",
               "expirationDate": "2022-09-11T00:00:00Z",
               "location": "fridge",
               "forDonation": false,
-              "id":11
+              "id":31
           },
           {
               "name": "Corn",
               "expirationDate": "2022-09-08T00:00:00Z",
-              "location": "fridge",
+              "location": "pantry",
               "forDonation": false,
-              "id":12
+              "id":32
           },
           {
-              "name": "Soysauce",
+              "name": "Peas",
               "expirationDate": "2022-09-13T00:00:00Z",
-              "location": "fridge",
+              "location": "freezer",
               "forDonation": false,
-              "id":13
+              "id":33
           },
           {
               "name": "Chicken",
               "expirationDate": "2022-09-04T00:00:00Z",
               "location": "fridge",
               "forDonation": false,
-              "id":14
+              "id":34
           }
         ]
       }

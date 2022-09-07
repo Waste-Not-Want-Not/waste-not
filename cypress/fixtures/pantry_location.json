@@ -8,25 +8,29 @@
             "name": "Kudzu",
             "expirationDate": "2022-09-11T00:00:00Z",
             "location": "pantry",
-            "forDonation": false
+            "forDonation": false,
+            "id":21
         },
         {
             "name": "Wheat",
             "expirationDate": "2022-09-08T00:00:00Z",
             "location": "pantry",
-            "forDonation": false
+            "forDonation": false,
+            "id":22
         },
         {
             "name": "Pumpkin Seed",
             "expirationDate": "2022-09-13T00:00:00Z",
             "location": "pantry",
-            "forDonation": false
+            "forDonation": false,
+            "id":23
         },
         {
             "name": "Mozzarella",
             "expirationDate": "2022-09-04T00:00:00Z",
             "location": "pantry",
-            "forDonation": false
+            "forDonation": false,
+            "id":24
         }
       ]
     }

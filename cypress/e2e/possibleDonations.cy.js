@@ -1,4 +1,4 @@
-import fridgeData from "../fixtures/fridge_location.json"
+import donationsData from "../fixtures/possibleDonations_location.json"
 
 describe('Test Pantry View',() => {
   Cypress.Commands.add(
@@ -44,12 +44,12 @@ describe('Test Pantry View',() => {
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData );
-    cy.visit('http://localhost:3000/fridge');
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationsData );
+    cy.visit('http://localhost:3000/expiring');
   });
 
   it('should have correct title', () => {
-      cy.get("h3").contains("FRIDGE");
+      cy.get("h3").contains("Possible Donations");
   });
 
   it('should have correct item card with buttons', () => {
@@ -61,20 +61,21 @@ describe('Test Pantry View',() => {
 });
 
   it('should have another correct item card with buttons', () => {
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationsData )
     cy.get(".item-card").eq(1).contains("Corn");
-    cy.get(".item-card").eq(1).contains("Location: fridge");
+    cy.get(".item-card").eq(1).contains("Location: pantry");
     cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").contains("ATE");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
   });
 
   it('be able to eat item', () => {
-    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
+    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
   });
 
   it('be able to donate item', () => {
-    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
+    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
   });
 });

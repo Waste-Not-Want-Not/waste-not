@@ -1,4 +1,4 @@
-import fridgeData from "../fixtures/fridge_location.json"
+import freezerData from "../fixtures/freezer_location.json"
 
 describe('Test Pantry View',() => {
   Cypress.Commands.add(
@@ -44,28 +44,34 @@ describe('Test Pantry View',() => {
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData );
-    cy.visit('http://localhost:3000/fridge');
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData );
+    cy.visit('http://localhost:3000/freezer');
   });
 
   it('should have correct title', () => {
-      cy.get("h3").contains("FRIDGE");
+      cy.wait(500)
+      cy.get("h3").contains("FREEZER");
   });
 
   it('should have correct item card with buttons', () => {
     cy.get(".item-card").first().contains("Chicken");
-    cy.get(".item-card").first().contains("Location: fridge");
+    cy.get(".item-card").first().contains("Location: freezer");
     cy.get(".expiration").first().contains("Expiration Date: Saturday, September 03, 2022");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").contains("ATE")
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE")
 });
 
   it('should have another correct item card with buttons', () => {
-    cy.get(".item-card").eq(1).contains("Corn");
-    cy.get(".item-card").eq(1).contains("Location: fridge");
+    cy.get(".item-card").eq(1).contains("Peas");
+    cy.get(".item-card").eq(1).contains("Location: freezer");
     cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").contains("ATE");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
+  });
+
+  it('be able to donate item', () => {
+    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
   });
 
   it('be able to eat item', () => {
@@ -73,8 +79,4 @@ describe('Test Pantry View',() => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
   });
 
-  it('be able to donate item', () => {
-    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
-  });
 });
