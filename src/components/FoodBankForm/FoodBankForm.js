@@ -10,15 +10,15 @@ const FoodBankForm = () => {
 
   const [getLocation, {loading, data, error}] = useLazyQuery(GET_FOODBANKS_QUERY);
 
-  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
 
   if (loading) return <h2 className='loading'>LOADING...</h2>
 
   const handleClick = event => {
     event.preventDefault();
-      // if (!inputLocation.includes(states.forEach(state => state))) {
-      //   alert('Please submit a valid city and state!')
-      // } else {
+      if (states.forEach(state => inputLocation.includes(state))) {
+        alert('Please submit a valid city and state!')
+      } else {
         getLocation({
           variables: {
             location: inputLocation
@@ -26,7 +26,8 @@ const FoodBankForm = () => {
         })
         alert('Location Submitted! Here is a near by food bank for you to donate your food to 😁');
         setLocation('');
-  }
+      }
+    }
 
   return (
     <section className='food-bank-form-container'>

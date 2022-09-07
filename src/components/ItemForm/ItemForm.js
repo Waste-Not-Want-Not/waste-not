@@ -11,7 +11,7 @@ const ItemForm = ({refetch}) => {
 
   const [createItem, {loading, error}] = useMutation(CREATE_ITEM);
 
-  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
   
   if (loading) return <h2 className='loading'>LOADING...</h2>
 

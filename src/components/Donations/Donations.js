@@ -31,7 +31,7 @@ const Donations = () => {
     refetch()
   }
 
-  if (error || deleteError) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error || deleteError) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
 
   if (loading) return <h2 className='loading'>LOADING...</h2>
 
