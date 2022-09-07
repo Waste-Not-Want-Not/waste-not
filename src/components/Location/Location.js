@@ -26,7 +26,7 @@ const Location = ({kitchenLocation}) => {
 
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
 
-  if (loading) return <h2>LOADING...</h2>
+  if (loading) return <h2 className='loading'>LOADING...</h2>
   
   
   if (data) {

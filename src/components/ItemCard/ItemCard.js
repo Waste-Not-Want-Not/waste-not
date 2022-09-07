@@ -34,7 +34,7 @@ const ItemCard = ({ item, refetch }) => {
 
   if (error || updateError) return <h1>Technical difficulties, please visit us later.</h1>
   
-  if (loading || updateLoading) return <h2>LOADING...</h2>
+  if (loading || updateLoading) return <h2 className='loading'>LOADING...</h2>
 
   return (
     <article className="item-card-container">

@@ -7,11 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* section,
-article,
-div {
-  border: dashed;
-} */
+.loading {
+  text-align: center;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

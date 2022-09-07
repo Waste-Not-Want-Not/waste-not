@@ -17,11 +17,9 @@ const Kitchen = () => {
   
   if (error) return <h1>Technical difficulties, please visit us later.</h1>
   
-  if (loading) return <h2>LOADING...</h2>
+  if (loading) return <h2 className='loading'>LOADING...</h2>
   
   if (data) {
-
-    // refetch();
 
     let newItems = [...data.getUserById.items];
   
@@ -34,7 +32,11 @@ const Kitchen = () => {
       }).map((item) => {
         return <Preview key={item.name} item={item} />
       })
-      return sortedPreviews.splice(0,5)
+      if (sortedPreviews.length > 5) {
+        return sortedPreviews.splice(0,5)
+      } else {
+        return sortedPreviews
+      }
     }
 
     return (
