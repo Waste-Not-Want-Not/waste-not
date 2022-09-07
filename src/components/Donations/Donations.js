@@ -39,10 +39,10 @@ const Donations = () => {
 
   if (data) {
     return ( 
-      <section>
+      <section className='donations-container'>
         <h3 className='donations-heading'>Donations</h3>
         {getDonations()}
-        <button onClick={() => handleClick()}>Confirm All Donations</button>
+        <button className='confirm-donations-button' onClick={() => handleClick()}>Confirm All Donations</button>
       </section>
     )
   }
