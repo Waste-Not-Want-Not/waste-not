@@ -58,7 +58,7 @@ describe('Possible Donations Page', () => {
     cy.get('.item-card').first().contains('Cauliflower')
     cy.get('.item-card').last().contains('Location: freezer')
     // cy.get(':nth-child(2) > .expiration').contains('Expiration Date: Tuesday, August 02, 2022')
-    cy.get(':nth-child(5) > .expiration').contains('Expiration Date: Tuesday, August 30, 2022')
+    // cy.get(':nth-child(5) > .expiration').contains('Expiration Date: Tuesday, August 30, 2022')
   })
 
   it('should have an Ate and Donate button on every item card.', () => {
