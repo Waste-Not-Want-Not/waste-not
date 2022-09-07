@@ -49,8 +49,7 @@ describe('kitchen', () => {
   });
 
   it('should have correct navbar', () => {
-    const items = data;
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items);
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", data);
     cy.get('button').first().click()
     cy.get('.title').contains('Waste Not, Want Not')
     cy.get('button').first().contains('MY KITCHEN')
@@ -59,8 +58,7 @@ describe('kitchen', () => {
   })
 
   it('should have pantry, fridge and freezer item previews', () => {
-    const items = data;
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items);
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", data);
     cy.get('button').first().click()
     cy.get('.pantry').contains('Wheat')
     cy.get('.fridge').contains('Plums')
@@ -68,8 +66,6 @@ describe('kitchen', () => {
   })
 
   it('should  able to create pantry item', () => {
-
-    const items = data;
 
     const newItem = {
         name:"potatoes",
@@ -87,7 +83,7 @@ describe('kitchen', () => {
         }
     }})
 
-    const newItems = {...items}
+    const newItems = {...data}
     newItems.data.getUserById.items.push(newItem)
 
     cy.get('button').first().click()
@@ -101,8 +97,6 @@ describe('kitchen', () => {
   })
 
   it('should  able to create fridge item', () => {
-
-    const items = data;
 
     const newItem = {
         name:"cheese",
@@ -120,7 +114,7 @@ describe('kitchen', () => {
         }
     }})
 
-    const newItems = {...items}
+    const newItems = {...data}
     newItems.data.getUserById.items.push(newItem)
 
     cy.get('button').first().click()
@@ -133,8 +127,6 @@ describe('kitchen', () => {
   })
 
   it('should  able to create freezer item', () => {
-
-    const items = data;
 
     const newItem = {
         name:"Popsicles",
@@ -152,7 +144,7 @@ describe('kitchen', () => {
         }
     }})
 
-    const newItems = {...items}
+    const newItems = {...data}
     newItems.data.getUserById.items.push(newItem)
 
     cy.get('button').first().click()

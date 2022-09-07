@@ -73,6 +73,7 @@ describe('overview',() => {
     })
 
     it('should have button to continue to kitchen',() => {
+        cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", data);
         cy.get('button').last().contains('Continue To Your Kitchen').click()
         cy.url().should('eq', 'http://localhost:3000/mykitchen')
     })
