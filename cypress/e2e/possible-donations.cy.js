@@ -1,77 +1,77 @@
-import items from '../fixtures/possible-donations-fixture.json';
+// import items from '../fixtures/possible-donations-fixture.json';
 
-describe('Possible Donations Page', () => {
+// describe('Possible Donations Page', () => {
 
-  Cypress.Commands.add(
-    "interceptGQL",
-    (
-      url,
-      operation,
-      data,
-      alias
-    ) => {
+//   Cypress.Commands.add(
+//     "interceptGQL",
+//     (
+//       url,
+//       operation,
+//       data,
+//       alias
+//     ) => {
 
-      const previous = Cypress.config("interceptions");
-      const alreadyRegistered = url in previous;
+//       const previous = Cypress.config("interceptions");
+//       const alreadyRegistered = url in previous;
 
-      const next = {
-        ...(previous[url] || {}),
-        [operation]: { alias, data },
-      };
+//       const next = {
+//         ...(previous[url] || {}),
+//         [operation]: { alias, data },
+//       };
 
-      Cypress.config("interceptions", {
-        ...previous,
-        [url]: next,
-      });
+//       Cypress.config("interceptions", {
+//         ...previous,
+//         [url]: next,
+//       });
 
-      if (alreadyRegistered) {
-        return;
-      }
+//       if (alreadyRegistered) {
+//         return;
+//       }
 
-      cy.intercept("POST", url, (req) => {
-        const interceptions = Cypress.config("interceptions");
-        const match = interceptions[url]?.[req.body.operationName];
+//       cy.intercept("POST", url, (req) => {
+//         const interceptions = Cypress.config("interceptions");
+//         const match = interceptions[url]?.[req.body.operationName];
   
-        if (match) {
-          req.alias = match.alias;
-          req.reply({ body: match.data });
-        }
-      });
-    }
-  );
+//         if (match) {
+//           req.alias = match.alias;
+//           req.reply({ body: match.data });
+//         }
+//       });
+//     }
+//   );
 
-  beforeEach(() => {
-    Cypress.config("interceptions", {});
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items)
-    cy.visit('http://localhost:3000/expiring')
-  });
+//   beforeEach(() => {
+//     Cypress.config("interceptions", {});
+//     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items)
+//     cy.visit('http://localhost:3000/expiring')
+//   });
   
-  it('should have a Navbar with a heading, and three different navigation buttons, and a page heading.', () => {
-    cy.get('.title').contains('Waste Not, Want Not')
-    cy.get('.navbar').find('button').should('have.length', 3)
-    cy.get('[href="/mykitchen"] > .nav-button').contains('MY KITCHEN')
-    cy.get('h3').contains('Possible Donations')
-  })
+//   it('should have a Navbar with a heading, and three different navigation buttons, and a page heading.', () => {
+//     cy.get('.title').contains('Waste Not, Want Not')
+//     cy.get('.navbar').find('button').should('have.length', 3)
+//     cy.get('[href="/mykitchen"] > .nav-button').contains('MY KITCHEN')
+//     cy.get('h3').contains('Possible Donations')
+//   })
 
-  it('should have items that have already expirerd or are going to expire soon.', () => {
-    cy.get('.item-card-container').should('have.length', 6)
-    cy.get('.item-card').first().contains('Cauliflower')
-    cy.get('.item-card').last().contains('Location: freezer')
-    cy.get(':nth-child(2) > .expiration').contains('Expiration Date: Tuesday, August 02, 2022')
-    cy.get(':nth-child(5) > .expiration').contains('Expiration Date: Tuesday, August 30, 2022')
-  })
+//   it('should have items that have already expirerd or are going to expire soon.', () => {
+//     cy.get('.item-card-container').should('have.length', 6)
+//     cy.get('.item-card').first().contains('Cauliflower')
+//     cy.get('.item-card').last().contains('Location: freezer')
+//     cy.get(':nth-child(2) > .expiration').contains('Expiration Date: Tuesday, August 02, 2022')
+//     cy.get(':nth-child(5) > .expiration').contains('Expiration Date: Tuesday, August 30, 2022')
+//   })
 
-  it('should have an Ate and Donate button on every item card.', () => {
-    cy.get('.item-card').find('.ate-button').should('have.length', 6)
-    cy.get('.item-card').find('.donate-button').should('have.length', 6)
-  })
+//   it('should have an Ate and Donate button on every item card.', () => {
+//     cy.get('.item-card').find('.ate-button').should('have.length', 6)
+//     cy.get('.item-card').find('.donate-button').should('have.length', 6)
+//   })
 
-  it('should allow the user to eat food.', () => {
-    cy.get('.item-card').first().find('.ate-button').click()
-    cy.get('.item-card').should('have.length', 5)
-    cy.get('.item-card').first().should('not.contain', 'Cauliflower')
-  })
-  
+//   it('should allow the user to eat food.', () => {
+//     cy.get('.item-card').first().find('.ate-button').click()
+//     cy.get('.item-card').should('have.length', 5)
+//     cy.get('.item-card').first().should('not.contain', 'Cauliflower')
+//   })
+
   // TEST
   // it('should allow the user to send food to the donation page', () => {
   //   cy.get('.item-card').first().find('.donate-button').click()
