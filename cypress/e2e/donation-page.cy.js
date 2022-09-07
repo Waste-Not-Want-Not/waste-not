@@ -116,4 +116,23 @@ describe('Possible Donations Page', () => {
     cy.get('.food-bank-info').contains('(303) 371-9250')
     cy.get('.food-bank-info').contains('10700 E 45th Ave, Denver, CO 80239')
   })
+
+  it('should be able to look up information for a different food bank based on a different city and state', () => {
+    cy.get('input').type('Denver, CO')
+    const foodBank2 = {
+      "data": {
+        "getFoodBank": {
+          "address": "6500 Metropolis Dr, Austin, TX 78744",
+          "directions": "Start out going east on W 2Nd St toward Colorado St, and continue for 0.067 Miles, Turn right onto Colorado St, and continue for 0.067 Miles, Turn left onto W Cesar Chavez St, and continue for 0.57 Miles, Turn right onto N Interstate 35, and continue for 0.103 Miles, Merge onto I-35 S/US-290 W via the ramp on the left, and continue for 2.715 Miles, Merge onto TX-71 E via EXIT 230 toward Bastrop, and continue for 1.371 Miles, Take the exit toward Montopolis Dr, and continue for 0.355 Miles, Merge onto E Ben White Blvd, and continue for 1.063 Miles, Turn right onto Montopolis Dr, and continue for 0.504 Miles, Turn left onto Burleson Rd, and continue for 0.454 Miles, Turn left onto Metropolis Dr, and continue for 0.082 Miles, 6500 METROPOLIS DR is on the left, and continue for 0 Miles",
+          "name": "Central Texas Food Bank",
+          "phoneNumber": "(512) 282-2111"
+        }
+      }
+    }
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getFoodBank", foodBank2)
+    cy.get('.submit-button').click()
+    cy.get('.food-bank-info').contains('Central Texas Food Bank')
+    cy.get('.food-bank-info').contains('(512) 282-2111')
+    cy.get('.food-bank-info').contains('Start out going east on W 2Nd St toward Colorado St, and continue for 0.067 Miles, Turn right onto Colorado St, and continue for 0.067 Miles, Turn left onto W Cesar Chavez St, and continue for 0.57 Miles, Turn right onto N Interstate 35, and continue for 0.103 Miles, Merge onto I-35 S/US-290 W via the ramp on the left, and continue for 2.715 Miles, Merge onto TX-71 E via EXIT 230 toward Bastrop, and continue for 1.371 Miles, Take the exit toward Montopolis Dr, and continue for 0.355 Miles, Merge onto E Ben White Blvd, and continue for 1.063 Miles, Turn right onto Montopolis Dr, and continue for 0.504 Miles, Turn left onto Burleson Rd, and continue for 0.454 Miles, Turn left onto Metropolis Dr, and continue for 0.082 Miles, 6500 METROPOLIS DR is on the left, and continue for 0 Miles')
+  })
 })
