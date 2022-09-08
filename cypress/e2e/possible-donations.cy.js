@@ -99,6 +99,6 @@ describe('Possible Donations Page', () => {
   it('should display an error message if network request fails.' , () => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById")
     cy.visit('http://localhost:3000/expiring').wait(2000)
-    cy.get('.error-message').should('have.text', 'Technical difficulties, please visit us later.')
+    cy.get('.error').should('have.text', 'Technical difficulties, please visit us later.')
   })
 })
