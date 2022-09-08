@@ -15,12 +15,16 @@ const Kitchen = () => {
     variables: { id: 1 }
   })
   
-  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
   
-  if (loading) return <h2>LOADING...</h2>
+  if (loading) return <h2 className='loading'>LOADING...</h2>
   
   if (data) {
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> main
     let newItems = [...data.getUserById.items];
   
     const getKitchen = (location) => {
@@ -32,7 +36,7 @@ const Kitchen = () => {
       }).map((item) => {
         return <Preview key={item.name} item={item} />
       })
-      return sortedPreviews.splice(0,5)
+        return sortedPreviews.splice(0,5)
     }
 
     return (

@@ -1,0 +1,10 @@
+.item-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFDD0;
+  padding: 1.5rem;
+  border-radius: 25%;
+  opacity: 95%;
+  margin-right: 2rem;
+}

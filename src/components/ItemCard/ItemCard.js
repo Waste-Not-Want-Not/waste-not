@@ -32,9 +32,9 @@ const ItemCard = ({ item, refetch }) => {
     alert(`${item.name} is ready for donation.  Confirm this donation on the donation page.`);
   }
 
-  if (error || updateError) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error || updateError) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
   
-  if (loading || updateLoading) return <h2>LOADING...</h2>
+  if (loading || updateLoading) return <h2 className='loading'>LOADING...</h2>
 
   return (
     <article className="item-card-container">
@@ -44,6 +44,7 @@ const ItemCard = ({ item, refetch }) => {
         <div className='item-details'>
           <p>{item.name}</p>
           <p>Location: {item.location}</p>
+          {item.forDonation && <p>Ready for Donation!</p>}
         </div>
         <div>
           <button className="ate-button" onClick={() => getItemId()}>ATE</button>
