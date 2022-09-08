@@ -17,8 +17,7 @@ const Navbar = () => {
       </NavLink>
       <div className='nav-header'>
         <img src={Logo} alt='app logo' className='app-logo' />
-        <h1 className='title'>WASTE NOT</h1>
-        <h1 className='title'>WANT NOT</h1>
+        <h1 className='title'>WASTE NOT, WANT NOT</h1>
         <NavLink to='/'>
           <div className='nav-container'>
             <img src={Overview} alt='kitchen logo' className='nav-button' />

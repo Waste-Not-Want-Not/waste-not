@@ -5,7 +5,7 @@ const Previews = ({ item }) => {
   return (
     <article className='item-preview'>
       <h4>{item.name}</h4>
-      {/* <img /> */}
+      <img src={item.image} alt={item.name} className='preview-image' />
     </article>
   )
 }
