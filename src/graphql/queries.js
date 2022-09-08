@@ -11,6 +11,7 @@ query getUserById($id: ID!) {
           expirationDate
           location
           image
+          forDonation
       }
     }
   }
@@ -27,6 +28,7 @@ query getUserById($id: ID!) {
           expirationDate
           location
           forDonation
+          image
       }
     }
   }

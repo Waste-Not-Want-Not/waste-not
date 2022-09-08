@@ -20,7 +20,6 @@ const Donations = () => {
   }
 
   const handleClick = () => {
-    console.log(data.getUserById.donationItems)
     deleteItems({
       variables: {
         input: {
@@ -30,18 +29,17 @@ const Donations = () => {
     })
     alert('Donations comfirmed!')
     refetch()
-    console.log(data.getUserById.donationItems)
   }
 
-  if (error || deleteError) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error || deleteError) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
 
-  if (loading) return <h2>LOADING...</h2>
+  if (loading) return <h2 className='loading'>LOADING...</h2>
 
   if (data) {
     return ( 
       <section className='donations-container'>
-        <h3 className='donations-heading'>Donations</h3>
-        {getDonations()}
+        <h2 className='donations-heading'>Donations</h2>
+        {getDonations().length ? getDonations(): <h3>No Donations</h3>}
         <button className='confirm-donations-button' onClick={() => handleClick()}>Confirm All Donations</button>
       </section>
     )

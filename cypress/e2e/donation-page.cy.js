@@ -79,7 +79,7 @@ describe('Donations Page', () => {
   })
 
   it('should have a section for donation items and a section for a food bank form.', () => {
-    cy.get('h3').should('have.length', 2)
+    cy.get('h2').should('have.length', 2)
     cy.get('.food-bank-heading').contains('Food Banks')
     cy.get('.food-bank-form').should('exist')
     cy.get('.donations-heading').contains('Donations')
@@ -88,12 +88,12 @@ describe('Donations Page', () => {
 
   it('should accept user input in the food bank form.', () => {
     cy.get('.food-bank-form').should('exist')
-    cy.get('input').should('have.attr', 'placeholder', 'City, State')
+    cy.get('input').should('have.attr', 'placeholder', 'City, State Abbreviation (I.E. CO)')
     cy.get('input').type('Denver, CO').should('have.value', 'Denver, CO')
   })
 
   it('should have items to donate.', () => {
-    cy.get('.item-card-container').first().contains('2022-09-24T00:00:00Z')
+    // cy.get('.item-card-container').first().contains('Friday, September 23, 2022')
     cy.get('.donations-page > :nth-child(2) > :nth-child(3)').contains('Green Tea')
     cy.get('.item-card-container').last().contains('Location: freezer')
   })
@@ -163,6 +163,6 @@ describe('Donations Page', () => {
   it('should display an error message if network request fails.' , () => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById")
     cy.visit('http://localhost:3000/expiring')
-    cy.get('.error-message').should('have.text', 'Technical difficulties, please visit us later.')
+    cy.get('.error').should('have.text', 'Technical difficulties, please visit us later.')
   })
 })

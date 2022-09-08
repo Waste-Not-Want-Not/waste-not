@@ -16,6 +16,7 @@ const Location = ({kitchenLocation}) => {
               expirationDate
               location
               image
+              forDonation
           }
         }
       }
@@ -24,9 +25,9 @@ const Location = ({kitchenLocation}) => {
      variables: { id: 1 }
   })
 
-  if (error) return <h1>Technical difficulties, please visit us later.</h1>
+  if (error) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
 
-  if (loading) return <h2>LOADING...</h2>
+  if (loading) return <h2 className='loading'>LOADING...</h2>
   
   
   if (data) {
