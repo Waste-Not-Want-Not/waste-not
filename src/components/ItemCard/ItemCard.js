@@ -42,8 +42,8 @@ const ItemCard = ({ item, refetch }) => {
       <div className="item-card">
         <img className="item-image" src={item.image} alt={item.name}/>
         <div className='item-details'>
-          <p>{item.name}</p>
-          <p>Location: {item.location}</p>
+          <p>Item: {item.name}</p>
+          <p>Location: {item.location.toUpperCase()}</p>
           {item.forDonation && <p>Ready for Donation!</p>}
         </div>
         <div>

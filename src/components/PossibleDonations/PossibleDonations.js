@@ -23,7 +23,6 @@ const PossibleDonations = () => {
      const date2 = new Date(b.expirationDate);
      return date1 - date2
    }).map(item => {
-      console.log(item.id);
      return <ItemCard item={item} key={Math.random()} refetch={refetch}/>
    }).splice(0, 10)
 
