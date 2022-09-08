@@ -1,6 +1,10 @@
 import freezerData from "../fixtures/freezer_location.json"
 
-describe('Test Pantry View',() => {
+describe('Test Freezer view',() => {
+
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    return false
+  })
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
@@ -15,26 +19,26 @@ describe('Test Pantry View',() => {
   });
 
   it('should have correct item card with buttons', () => {
-    cy.get(".title").contains("Waste Not, Want Not")
+    cy.get(".title").contains("WASTE NOT, WANT NOT")
     cy.get(".item-card").first().contains("Chicken");
-    cy.get(".item-card").first().contains("Location: freezer");
-    // cy.get(".expiration").first().contains("Expiration Date: Saturday, September 03, 2022");
+    cy.get(".item-card").first().contains("Location: FREEZER");
+    cy.get(".expiration").first().contains("Expiration Date: Saturday, September 03, 2022");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").contains("ATE")
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE")
 });
 
   it('should have another correct item card with buttons', () => {
-    cy.get(".title").contains("Waste Not, Want Not")
+    cy.get(".title").contains("WASTE NOT, WANT NOT")
     cy.get(".item-card").eq(1).contains("Peas");
-    cy.get(".item-card").eq(1).contains("Location: freezer");
-    // cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
+    cy.get(".item-card").eq(1).contains("Location: FREEZER");
+    cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").contains("ATE");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
   });
 
   it('be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
-    // cy.get(".item-card-container").first().should("not.contain","Chicken"); passing locally but not in CI
+    cy.get(".item-card-container").first().should("not.contain","Chicken");
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {});
   });
 
@@ -62,7 +66,7 @@ describe('Test Pantry View',() => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
     cy.get('button').eq(2).click()
-    cy.contains('Chicken')
+    // cy.contains('Chicken')
 
   });
 
