@@ -34,14 +34,15 @@ describe('Test Fridge View',() => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
   });
 
-  it('be able to eat item', () => {
+  it('should be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} );
     cy.get(".item-card-container").should("not.contain","Chicken");
   });
 
-  it('be able to donate item', () => {
-      const donationItem = {
+  it('should be able to donate item', () => {
+    cy.get('.item-card').first().find('.donate-button').click()
+    const donationItem = {
       "data": {
         "getUserById": {
           "name": "Edward Schaden",
@@ -58,11 +59,10 @@ describe('Test Fridge View',() => {
         }
       }
     }
-    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
-    cy.get('button').eq(2).click()
-    // cy.contains('Chicken')
+    cy.visit('http://localhost:3000/donations')
+    cy.get('.item-card-container').contains('Chicken')
+    cy.get('.item-card-container').contains('Location: FRIDGE')
   });
   
   it('should display an error message if network request fails.' , () => {

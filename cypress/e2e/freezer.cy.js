@@ -35,14 +35,14 @@ describe('Test Freezer view',() => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
   });
 
-  it('be able to eat item', () => {
+  it('should be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
     cy.get(".item-card-container").first().should("not.contain","Chicken");
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {});
   });
 
-  it('be able to donate item', () => {
-
+  it('should be able to donate item', () => {
+    cy.get('.item-card').first().find('.donate-button').click()
     const donationItem = {
       "data": {
         "getUserById": {
@@ -50,23 +50,20 @@ describe('Test Freezer view',() => {
           "email": "joetta.adams@wolf-grimes.name",
           "donationItems": [ 
             {
+              "id": 1,
+              "expirationDate": "2022-05-11T00:00:00Z",
+              "location": "freezer",
               "name": "Chicken",
-              "expirationDate": "2022-09-03T00:00:00Z",
-              "location": "pantry",
-              "forDonation": false,
-              "id":24
-          }
+              "forDonation": true
+            }
           ]
         }
       }
     }
-
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
-    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
-    cy.get('button').eq(2).click()
-    // cy.contains('Chicken')
-
+    cy.visit('http://localhost:3000/donations')
+    cy.get('.item-card-container').contains('Chicken')
+    cy.get('.item-card-container').contains('Location: FREEZER')
   });
 
   it('should display an error message if network request fails.' , () => {

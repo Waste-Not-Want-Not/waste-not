@@ -34,37 +34,35 @@ describe('Test Pantry View',() => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
   });
 
-  it('be able to eat item', () => {
+  it('should be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
     cy.get(".item-card-container").first().should("not.contain","Mozzarella");
   });
 
-  it('be able to donate item', () => {
-
-      const donationItem = {
+  it('should be able to donate item', () => {
+    cy.get('.item-card').first().find('.donate-button').click()
+    const donationItem = {
       "data": {
         "getUserById": {
           "name": "Edward Schaden",
           "email": "joetta.adams@wolf-grimes.name",
           "donationItems": [ 
             {
-              "name": "Mozzarella",
-              "expirationDate": "2022-09-04T00:00:00Z",
-              "location": "pantry",
-              "forDonation": false,
-              "id":24
-          }
+                "name": "Mozzarella",
+                "expirationDate": "2022-09-04T00:00:00Z",
+                "location": "pantry",
+                "forDonation": true,
+                "id":24
+            }
           ]
         }
       }
     }
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
-    cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").click();
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
-    cy.get('button').eq(2).click()
-    // cy.contains('Mozzarella')
-
+    cy.visit('http://localhost:3000/donations')
+    cy.get('.item-card-container').contains('Mozzarella')
+    cy.get('.item-card-container').contains('Location: PANTRY')
   });
 
   it('should display an error message if network request fails.' , () => {
