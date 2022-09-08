@@ -1,12 +1,26 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: solid .25rem;
+  background-color: #BBBBBB;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
+.nav-container:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all .5s;
+  opacity: .8;
+}
+
 .nav-button {
-  padding: 1rem;
-  margin: 1.5rem;
+  width: 4rem;
 }
 
 .nav-header {
@@ -14,4 +28,13 @@
   flex-direction: column;
   align-items: center;
   padding:1rem;
+}
+
+.app-logo {
+  width: 5rem;
+}
+
+.overview-button {
+  width: 10rem;
+  margin: .5rem;
 }
