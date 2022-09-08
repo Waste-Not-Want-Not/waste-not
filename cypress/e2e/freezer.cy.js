@@ -41,7 +41,7 @@ describe('Test Freezer view',() => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {});
   });
 
-  // it.only('should be able to donate item', () => {             Passing Locally but not on Circle CI
+  // it.only('should be able to donate item', () => {             Passing Locally but not on Circle CI /
   //   cy.get('.item-card').first().find('.donate-button').click()
   //   const donationItem = {
   //     "data": {
