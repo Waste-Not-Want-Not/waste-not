@@ -20,11 +20,7 @@ const Kitchen = () => {
   if (loading) return <h2 className='loading'>LOADING...</h2>
   
   if (data) {
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> main
     let newItems = [...data.getUserById.items];
   
     const getKitchen = (location) => {

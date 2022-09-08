@@ -45,12 +45,8 @@ const FoodBankForm = () => {
       <article className='food-bank-info'>
         {data && (
           <>
-<<<<<<< HEAD
-            <p>Name:{data.getFoodBank.name} </p>
-=======
             <p>Name: {data.getFoodBank.name} </p>
             <p>Phone #: {data.getFoodBank.phoneNumber}</p>
->>>>>>> main
             <p>Address: {data.getFoodBank.address} </p>
             <p>Directions: {data.getFoodBank.directions}</p>
           </>
