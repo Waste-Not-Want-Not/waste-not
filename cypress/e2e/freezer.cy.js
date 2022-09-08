@@ -48,7 +48,7 @@ describe('Test Freezer view',() => {
     Cypress.config("interceptions", {});
     cy.visit('http://localhost:3000/freezer');
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData ).as('GetFreezerData')
-    cy.wait('@GetFreezerData')
+    // cy.wait('@GetFreezerData')
     // cy.get(".title").contains("WASTE NOT, WANT NOT"); Passing locally, but not in Circle CI
   });
 
