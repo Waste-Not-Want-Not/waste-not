@@ -1,6 +1,6 @@
 import fridgeData from "../fixtures/fridge_location.json"
 
-describe('Test Pantry View',() => {
+describe('Test Fridge View',() => {
 
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false
