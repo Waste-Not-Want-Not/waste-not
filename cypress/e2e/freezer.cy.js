@@ -11,6 +11,7 @@ describe('Test Freezer view',() => {
     cy.visit('http://localhost:3000/freezer');
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData ).as('GetFreezerData')
     cy.wait('@GetFreezerData')
+    // cy.get(".title").contains("WASTE NOT, WANT NOT"); Passin locally, but not in Circle CI
   });
 
   it('should have correct title', () => {

@@ -48,6 +48,7 @@ describe('Possible Donations Page', () => {
     Cypress.config("interceptions", {});
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items)
     cy.visit('http://localhost:3000/expiring')
+    // cy.get(".title").contains("WASTE NOT, WANT NOT"); Passin locally, but not in Circle CI
   });
   
   it('should have a Navbar with a heading, and three different navigation buttons, and a page heading.', () => {
