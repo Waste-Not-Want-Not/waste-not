@@ -5,12 +5,13 @@ const Donation = ({item}) => {
 
   return(
     <article className="item-card-container">
-      <p className="expiration">{dayjs(item.expirationDate).format('dddd, MMMM DD, YYYY')}</p>
+      <p className="donation-expiration">{dayjs(item.expirationDate).format('dddd, MMMM DD, YYYY')}</p>
       <div className="donation">
         <img className="donation-image" src={item.image} alt={item.name}/>
-        <div>
-          <p>{item.name}</p>
-          <p>Location: {item.location}</p>
+        <div className='donation-info'>
+          <p>Item: {item.name}</p>
+          <p>Location: {item.location.toUpperCase()}</p>
+          <p>Ready for Donation!</p>
         </div>
       </div>
     </article>
