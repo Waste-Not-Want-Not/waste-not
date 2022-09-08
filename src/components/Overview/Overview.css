@@ -1,11 +1,15 @@
 .overview {
-    display:grid;
-    place-items: center;
-    border: solid;
-    padding:1.5rem;
+  display:grid;
+  place-items: center;
+  border: solid;
+  background-color: #4A7B9D ;
+  padding:1rem;
+  color: #FFFFF9;
+  margin-top: 1rem;
 }
 
 .overview > p {
-    margin:0;
-    padding: 1rem;
+  margin:0;
+  padding: 1rem;
+  font-size: 1.1rem;
 }
