@@ -10,7 +10,7 @@ describe('overview',() => {
           data,
           alias
         ) => {
-          // Retrieve any previously registered interceptions.
+          
           const previous = Cypress.config("interceptions");
           const alreadyRegistered = url in previous;
       
@@ -19,18 +19,15 @@ describe('overview',() => {
             [operation]: { alias, data },
           };
       
-          // Merge in the new interception.
           Cypress.config("interceptions", {
             ...previous,
             [url]: next,
           });
-      
-          // No need to register handler more than once per URL. Operation data is
-          // dynamically chosen within the handler.
+
           if (alreadyRegistered) {
             return;
           }
-      
+
           cy.intercept("POST", url, (req) => {
             const interceptions = Cypress.config("interceptions");
             const match = interceptions[url]?.[req.body.operationName];
@@ -45,8 +42,6 @@ describe('overview',() => {
 
     beforeEach(() => {
         Cypress.config("interceptions", {});
-        // const items = data;
-        // cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", items);
         cy.visit('http://localhost:3000/')
     })
 

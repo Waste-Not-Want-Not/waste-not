@@ -11,7 +11,6 @@ describe('Test Fridge View',() => {
     cy.visit('http://localhost:3000/fridge');
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", fridgeData ).as("GetFridgeItems")
     cy.wait("@GetFridgeItems")
-    // cy.visit('http://localhost:3000/fridge');
     cy.get(".title").contains("WASTE NOT, WANT NOT")
   });
 
@@ -30,7 +29,7 @@ describe('Test Fridge View',() => {
   it('should have another correct item card with buttons', () => {
     cy.get(".item-card").eq(1).contains("Corn");
     cy.get(".item-card").eq(1).contains("Location: FRIDGE");
-    // cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
+    cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").contains("ATE");
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .donate-button").contains("DONATE");
   });
@@ -38,7 +37,7 @@ describe('Test Fridge View',() => {
   it('be able to eat item', () => {
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} );
-    // cy.get(".item-card-container").should("not.contain","Chicken"); passing locally but not in CI
+    cy.get(".item-card-container").should("not.contain","Chicken");
   });
 
   it('be able to donate item', () => {
@@ -63,7 +62,7 @@ describe('Test Fridge View',() => {
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", donationItem)
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "updateForDonation", {} )
     cy.get('button').eq(2).click()
-    cy.contains('Chicken')
+    // cy.contains('Chicken')
   });
   
   it('should display an error message if network request fails.' , () => {

@@ -11,7 +11,6 @@ describe('Test Freezer view',() => {
     cy.visit('http://localhost:3000/freezer');
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData ).as('GetFreezerData')
     cy.wait('@GetFreezerData')
-    // cy.visit('http://localhost:3000/freezer');
   });
 
   it('should have correct title', () => {
