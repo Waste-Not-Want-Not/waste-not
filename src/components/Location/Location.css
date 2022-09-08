@@ -1,6 +1,12 @@
+.location-container {
+  background-color: #BBBBBB ;
+  margin: 0;
+}
+
 .location {
   text-align: center;
-  margin-right: 3.5rem
+  margin-right: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .location-items {

@@ -1,5 +1,13 @@
 .food-bank-form-container {
   width: 40vw;
+  background-color: #B88458;
+  color: #151515;
+  border: solid;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-radius: 20%;
+  opacity: 95%;
 }
 
 .food-bank-heading {
@@ -10,6 +18,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+ 
 }
 
 input {
@@ -22,5 +31,23 @@ input {
 
 .food-bank-info {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  background-color: #4A7B9D;
+  color: #FFFFF9;
+  border-radius: 8%;
 }
+
+/* .item-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #B88458;
+  color: #151515;
+  border: solid;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border-radius: 25%;
+  opacity: 95%;
+  margin-right: 2rem;
+} */

@@ -1,17 +1,55 @@
+.donation-expiration {
+  text-align: center;
+  background-color: #8b0000;
+  color: #FFFFF9;
+  font-size: 1rem;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  margin-bottom: 0rem;
+}
+
 .donation {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   border: 3px solid black;
   padding: 1rem;
-  background-color: #F0F3BD;
-  color: #05668D;
+  background-color: #4A7B9D;
+  color: #FFFFF9;
   font-size: 1.25rem;
   margin: 1rem;
   height: 15vw;
 }
 
 .donation-image {
-  width: 7.5vw;
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem;
 }
+
+/* .item-card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  border: 3px solid black;
+  padding: 2rem;
+  background-color: #4A7B9D;
+  color: #FFFFF9;
+  font-size: 1.25rem;
+  margin: 1rem;
+  width: 75vw;
+}
+
+.ate-button,
+.donate-button {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.item-image {
+  height:7rem;
+  width:7rem;
+  border-radius: 10%;
+} */ 

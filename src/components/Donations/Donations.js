@@ -28,7 +28,7 @@ const Donations = () => {
       }
     })
     alert('Donations comfirmed!')
-    refetch()
+    refetch();
   }
 
   if (error || deleteError) return <h1 className='error'>Technical difficulties, please visit us later.</h1>
