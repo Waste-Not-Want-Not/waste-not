@@ -1,17 +1,55 @@
 import freezerData from "../fixtures/freezer_location.json"
 
 describe('Test Freezer view',() => {
-
+  
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
+
+  Cypress.Commands.add(
+    "interceptGQL",
+    (
+      url,
+      operation,
+      data,
+      alias
+    ) => {
+
+      const previous = Cypress.config("interceptions");
+      const alreadyRegistered = url in previous;
+
+      const next = {
+        ...(previous[url] || {}),
+        [operation]: { alias, data },
+      };
+
+      Cypress.config("interceptions", {
+        ...previous,
+        [url]: next,
+      });
+
+      if (alreadyRegistered) {
+        return;
+      }
+
+      cy.intercept("POST", url, (req) => {
+        const interceptions = Cypress.config("interceptions");
+        const match = interceptions[url]?.[req.body.operationName];
+  
+        if (match) {
+          req.alias = match.alias;
+          req.reply({ body: match.data });
+        }
+      });
+    }
+  );
 
   beforeEach(() => {
     Cypress.config("interceptions", {});
     cy.visit('http://localhost:3000/freezer');
     cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "getUserById", freezerData ).as('GetFreezerData')
     cy.wait('@GetFreezerData')
-    // cy.get(".title").contains("WASTE NOT, WANT NOT"); Passin locally, but not in Circle CI
+    // cy.get(".title").contains("WASTE NOT, WANT NOT"); Passing locally, but not in Circle CI
   });
 
   it('should have correct title', () => {
