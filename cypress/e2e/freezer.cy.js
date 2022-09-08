@@ -33,9 +33,9 @@ describe('Test Pantry View',() => {
   });
 
   it('be able to eat item', () => {
+    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
     cy.get(":nth-child(1) > .item-card > :nth-child(3) > .ate-button").click();
     cy.get(".item-card-container").first().should("not.contain","Chicken");
-    cy.interceptGQL("https://waste-not-be.herokuapp.com/graphql", "deleteItem", {} )
   });
 
   it('be able to donate item', () => {
