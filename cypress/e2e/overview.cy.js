@@ -46,7 +46,7 @@ describe('overview',() => {
     })
 
     it('should have correct navbar', () => {
-        cy.get('.title').contains('WASTE NOT, WANT NOT')
+        cy.get('.app-logo').should('be.visible');
         cy.get('.navbar > [href="/mykitchen"] > .nav-container > label').contains('My Kitchen')
         cy.get('.active > .nav-container > label').contains('Overview')
         cy.get('[href="/donations"] > .nav-container > label').contains('Donation Page')

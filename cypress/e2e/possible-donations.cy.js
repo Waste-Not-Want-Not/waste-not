@@ -52,7 +52,7 @@ describe('Possible Donations Page', () => {
   });
   
   it('should have a Navbar with a heading, and three different navigation buttons, and a page heading.', () => {
-    cy.get('.title').contains('WASTE NOT, WANT NOT')
+    cy.get('.app-logo').should('be.visible');
     cy.get('.navbar').find('label').should('have.length', 3)
     cy.get('[href="/mykitchen"] > .nav-container').contains('My Kitchen')
     cy.get('h3').contains('Possible Donations')
