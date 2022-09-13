@@ -9,19 +9,19 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
 	return (
 		<header className='navbar'>
-				<NavLink to='/mykitchen'>
-					<div className='nav-container'>
-						<img src={Kitchen} alt='kitchen logo' className='nav-button' />
-						<label>My Kitchen</label>
-					</div>
-				</NavLink>
-			<div className='nav-header'>
-			<NavLink to='/'>
+			<NavLink to='/mykitchen'>
 				<div className='nav-container'>
-					<img src={Overview} alt='kitchen logo' className='nav-button' />
-					<label>Overview</label>
+					<img src={Kitchen} alt='kitchen logo' className='nav-button' />
+					<label>My Kitchen</label>
 				</div>
 			</NavLink>
+			<div className='nav-header'>
+				<NavLink to='/'>
+					<div className='nav-container'>
+						<img src={Overview} alt='kitchen logo' className='nav-button' />
+						<label>Overview</label>
+					</div>
+				</NavLink>
 				<img src={Logo} alt='app logo' className='app-logo' />
 			</div>
 			<NavLink to='/donations'>

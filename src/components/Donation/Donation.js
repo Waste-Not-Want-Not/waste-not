@@ -2,7 +2,6 @@ import './Donation.css';
 const dayjs = require('dayjs');
 
 const Donation = ({item}) => {
-
   return(
     <article className="item-card-container">
       <p className="donation-expiration">{dayjs(item.expirationDate).format('dddd, MMMM DD, YYYY')}</p>
