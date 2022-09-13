@@ -3,7 +3,7 @@ import './ItemForm.css';
 import { useMutation } from '@apollo/client';
 import { CREATE_ITEM } from '../../graphql/mutations';
 
-const ItemForm = ({refetch}) => {
+const ItemForm = ({ refetch }) => {
 
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');

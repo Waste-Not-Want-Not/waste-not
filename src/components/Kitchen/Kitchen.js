@@ -10,7 +10,7 @@ import { GET_ITEMS_QUERY } from '../../graphql/queries';
 import { NavLink } from 'react-router-dom';
 
 const Kitchen = () => {
-
+	
   const {loading, data, error, refetch} = useQuery( GET_ITEMS_QUERY, {
     variables: { id: 1 }
   })

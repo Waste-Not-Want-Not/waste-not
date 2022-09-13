@@ -2,7 +2,7 @@ import { useQuery, gql } from '@apollo/client';
 import ItemCard from "../ItemCard/ItemCard"
 import "./Location.css"
 
-const Location = ({kitchenLocation}) => {
+const Location = ({ kitchenLocation }) => {
   
   const GET_ITEMS_BY_LOCATION_QUERY = gql`
     query getUserById($id: ID!) {

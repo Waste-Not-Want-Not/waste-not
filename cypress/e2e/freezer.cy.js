@@ -58,7 +58,7 @@ describe('Test Freezer view',() => {
   });
 
   it('should have correct item card with buttons', () => {
-    cy.get(".title").contains("WASTE NOT, WANT NOT")
+    cy.get('.app-logo').should('be.visible');
     cy.get(".item-card").first().contains("Chicken");
     cy.get(".item-card").first().contains("Location: FREEZER");
     // Passing locally, but on in Circle CI
@@ -68,7 +68,7 @@ describe('Test Freezer view',() => {
 });
 
   it('should have another correct item card with buttons', () => {
-    cy.get(".title").contains("WASTE NOT, WANT NOT")
+    cy.get('.app-logo').should('be.visible');
     cy.get(".item-card").eq(1).contains("Peas");
     cy.get(".item-card").eq(1).contains("Location: FREEZER");
     // cy.get(".expiration").eq(1).contains("Expiration Date: Wednesday, September 07, 2022"); Passing locally, but on in Circle CI
