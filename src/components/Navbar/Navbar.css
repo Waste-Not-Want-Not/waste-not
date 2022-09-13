@@ -35,7 +35,9 @@
 }
 
 .app-logo {
-  width: 5rem;
+  width: 14rem;
+  border-radius: 30% ;
+  padding-top: 1rem;
 }
 
 .overview-button {
